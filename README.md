@@ -1,22 +1,41 @@
 # CartiMorph
 
+[Python: 3.10] [Matlab: 2022b]
+
 Code and documents will be available when our paper is published.
 
 [!] I’ll update this repo by 30 June 2023. Stay tuned!
 
-## Paper
+
+
+## 1. Publication
 
 **CartiMorph: a framework for automated knee articular cartilage morphometrics** (under review)
 
+- a method for automated cartilage thickness mapping that is robust to cartilage lesions
+- a method for automated full-thicknes cartilage loss (FCL) estimation
+- a rule-based cartilage parcellation method that is robust ot FCL
+
 ![paper-CartiMorph-bw](README.assets/paper-CartiMorph-bw.png)
 
-## Quick Start
+| Notation                                     | Meaning                                                     |
+| -------------------------------------------- | ----------------------------------------------------------- |
+| $I_i$                                        | MR image                                                    |
+| $S_i$                                        | Segmentation mask                                           |
+| $S_i^l$                                      | Manual segmentation label                                   |
+| $I^t$                                        | Template image                                              |
+| $S^t$                                        | Template segmentation mask                                  |
+| $\mathcal{F}_{\theta_s}$                     | Segmentation model                                          |
+| $\mathcal{G}_{\theta_t}$                     | Template learning model – essentially a registration model  |
+| $\mathcal{G}_{\theta_u}$                     | Registration model                                          |
+| $\mathcal{M}_{down, \theta_i}(\cdot, \cdot)$ | Dowsample function consisting of cropping and resampling    |
+| $\mathcal{M}_{up}(\cdot, \cdot)$             | Upsample function consisting of resampling and zero-filling |
 
-(in progress)
 
-## Data
 
-### Datasets and Data Split
+## 2. Data
+
+### 2.1 Datasets and Data Split
 
 MR images: [Osteoarthritis Initiative (OAI) dataset](https://nda.nih.gov/oai/)
 
@@ -36,7 +55,7 @@ Data split in our study:
 | [dataset 4](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset4.xlsx) | framework evaluation  | 481  | 103/58/108/139/73 |
 | [dataset 5](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset5.xlsx) | FCL manual grading    | 79   | 2/1/7/22/47       |
 
-### Preparing Data
+### 2.2 Preparing Data
 
 To reproduce and validate our work, follow the steps to prepare data.
 
@@ -60,30 +79,81 @@ To reproduce and validate our work, follow the steps to prepare data.
 
    - you need to use the [subject information table](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/OAIZIB_subject_info.xlsx)
 
-### CartiMorph Data Request
+### 2.3 CartiMorph Data Request
 
 If you want to download the modified segmentation masks in `.nii.gz`, please follow the steps:
 
 1. Register at [ZIB-Pubdata](https://pubdata.zib.de) for access to the “Manual Segmentations” dataset
+
 2. Find my email address on the left sidebar of my [personal webpage](https://yongchengyao.github.io), and ask for data sharing via email.
+
    - Email title: [CartiMorph Data Request] + [your institution]
+
    - you should include your login email for ZIB-Pubdata in the request
 
-   
+     
+
+## 3. Methods
+
+### 3.1 Image Standardisation
+
+By implementing an image standardization scheme, the proposed framework is capable of processing images of different orientations and sizes. This involves reorienting all images to the RAS+ direction, where the first, second, and third dimensions of the image array correspond to the left-right, posterior-anterior, and inferior-superior directions, respectively.
+
+Use our script (`imgStandardisation.m`) to standardise images and segmentation labels before model training and other algorithms. Use the processed images in the remaining experiments.
+
+
+
+### 3.2 Knee Template Learning
+
+**Model Training:**
+
+1. Setup a Conda environment using our script (`envSetup_CartiMorph-vxm.sh`) – it will create an virtual environment `CartiMorphToolbox-Vxm` and install [`CartiMorph-vxm`](https://github.com/YongchengYAO/CartiMorph-vxm)
+
+2. Prepare training data using the [image list](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset1.xlsx) and our script (`prepareData4Reg.m`)
+
+3. Train a model to learn a representative template image
+
+   - `training_scratch.sh`: train a model from scratch
+   - `training_continue.sh`: continue training
+
+4. Construct the segmentation mask for the learning template image
+
+   1. Warp manual segmentation labels of training images to the template image space with our script (`predicting_getTempSeg.sh`)
+   2. Construct template segmentation with out script (`constructTempSeg.m`)
 
    
 
-   
+### 3.3 Cartilage & Bone Segmentation
 
-   
+**Model Training:**
+
+1. Setup a Conda environment using our script (`envSetup_CartiMorph-nnUNet.sh`) – it will create an virtual environment `CartiMorphToolbox-nnUNet` and install [`CartiMorph-nnUNet`](https://github.com/YongchengYAO/CartiMorph-nnUNet)
+2. Image preprocessing
+   1. modify `generate_dataset_json.sh` and `generate_dataset_json.py`, then run `generate_dataset_json.sh`
+   2. preprocess data uisng our script (`planning_preprocessing.sh`)
+3. Train the model with our script (`training_3dF.sh`)
 
 
 
-## Methods
+### 3.4 Template-to-image Registration
 
-(in progress)
+**Model Training:**
 
 
+
+### 3.5 Cartilage Morphometrics
+
+We adopt the mathematical notations as those used in the paper.
+
+**Surface Closing:**     $ \mathcal{O}_c(M_{i,c}^{in} \; | \; \Omega_{surf}) = \mathcal{O}_e^{n_e}( \mathcal{O}_d^{n_d}(M_{i,c}^{in} \; | \; \Omega_{surf}) )$     [script]
+
+**Surface Dilation:**     $\mathcal{O}_d^{n_d}(M_{i,c}^{in} \; | \; \Omega_{surf})$    [script]
+
+**Surface Erosion:**     $\mathcal{O}_e^{n_e}(\cdot)$    [script]
+
+**Restricted Surface Dilation:**     $ \mathcal{O}_{rd}(M_{i,c}^{out} \; | \; \Omega_{surf}, \mathfrak{B}) = \mathcal{O}_d^\infty(M_{i,c}^{out} \; | \; \Omega_{surf}^\mathfrak{B})$      [script]
+
+**Surface Hole Filling:**     $\mathcal{O}_{sf}(\cdot , \cdot)$      [script]
 
 
 
@@ -91,21 +161,9 @@ If you want to download the modified segmentation masks in `.nii.gz`, please fol
 
 ## Acknowledgement
 
-- We thank the Osteoarthritis Initiative (OAI) for sharing MR images and non-image clinical data
+- We thank the Osteoarthritis Initiative (OAI) for sharing MR images and non-image clinical data –  [Osteoarthritis Initiative (OAI) dataset](https://nda.nih.gov/oai/)
+- We thank the Computational Diagnosis and Therapy Planning Group of Zuse Institute Berlin (ZIB) for sharing the manual segmentation masks –  [OAI-ZIB dataset](https://pubdata.zib.de)
 
-- We thank the Computational Diagnosis and Therapy Planning Group of Zuse Institute Berlin (ZIB) for sharing the manual segmentation masks
-
-  ```latex
-  @article{ambellan2019automated,
-    title={Automated segmentation of knee bone and cartilage combining statistical shape knowledge and convolutional neural networks: Data from the Osteoarthritis Initiative},
-    author={Ambellan, Felix and Tack, Alexander and Ehlke, Moritz and Zachow, Stefan},
-    journal={Medical image analysis},
-    volume={52},
-    pages={109--118},
-    year={2019},
-    publisher={Elsevier}
-  }
-  ```
-
-  
+- Our work is partially based on [nnUNet](https://github.com/MIC-DKFZ/nnUNet)
+- Our work is partially based on [VoxelMorph](https://github.com/voxelmorph/voxelmorph)
 
