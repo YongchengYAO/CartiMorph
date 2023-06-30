@@ -145,13 +145,13 @@ Use our script (`imgStandardisation.m`) to standardise images and segmentation l
 
 We adopt the mathematical notations as those used in the paper.
 
-**Surface Closing:**     $ \mathcal{O}_c(M_{i,c}^{in} \; \mid \; \Omega_{surf}) = \mathcal{O}_e^{n_e}( \mathcal{O}_d^{n_d}(M_{i,c}^{in} \; \mid \; \Omega_{surf}) )$     [script]
+**Surface Closing:**     $ \mathcal{O}_c(M_{i,c}^{in} \mid \Omega_{surf}) = \mathcal{O}_e^{n_e}( \mathcal{O}_d^{n_d}(M_{i,c}^{in} \mid \Omega_{surf}) )$     [script]
 
-**Surface Dilation:**     $\mathcal{O}_d^{n_d}(M_{i,c}^{in} \; \mid \; \Omega_{surf})$    [script]
+**Surface Dilation:**     $\mathcal{O}_d^{n_d}(M_{i,c}^{in} \mid \Omega_{surf})$    [script]
 
 **Surface Erosion:**     $\mathcal{O}_e^{n_e}(\cdot)$    [script]
 
-**Restricted Surface Dilation:**     $ \mathcal{O}_{rd}(M_{i,c}^{out} \; \mid \; \Omega_{surf}, \mathfrak{B}) = \mathcal{O}_d^\infty(M_{i,c}^{out} \; \mid \; \Omega_{surf}^\mathfrak{B})$      [script]
+**Restricted Surface Dilation:**     $ \mathcal{O}_{rd}(M_{i,c}^{out} \mid \Omega_{surf}, \mathfrak{B}) = \mathcal{O}_d^\infty(M_{i,c}^{out} \mid \Omega_{surf}^\mathfrak{B})$      [script]
 
 **Surface Hole Filling:**     $\mathcal{O}_{sf}(\cdot , \cdot)$      [script]
 
