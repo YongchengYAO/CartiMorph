@@ -151,7 +151,23 @@ We adopt the mathematical notations as those used in the paper.
 
 **Surface Erosion:**     $\mathcal{O}_e^{n_e}(\cdot)$    [script]
 
-**Restricted Surface Dilation:**     $ \mathcal{O}_{rd}(M_{i,c}^{out} | \Omega_{surf}, \mathfrak{B}) = \mathcal{O}_d^\infty(M_{i,c}^{out} | \Omega_{surf}^\mathfrak{B})$      [script]
+**Restricted Surface Dilation:**     $$ \mathcal{O}_{rd}(M_{i,c}^{out} | \Omega_{surf}, \mathfrak{B}) = \mathcal{O}_d^\infty(M_{i,c}^{out} | \Omega_{surf}^\mathfrak{B})$$     
+
+$ \mathcal{O}_{rd}(M_{i,c}^{out} | \Omega_{surf}, \mathfrak{B}) = \mathcal{O}_d^\infty(M_{i,c}^{out} | \Omega_{surf}^\mathfrak{B})$  
+
+$ A | B $
+
+$ A \; | \; B$
+
+$ A \mid B $
+
+$ A \| B $
+
+$\mathfrak{B}$
+
+
+
+ [script]
 
 **Surface Hole Filling:**     $\mathcal{O}_{sf}(\cdot , \cdot)$      [script]
 
