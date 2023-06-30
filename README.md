@@ -151,21 +151,11 @@ We adopt the mathematical notations as those used in the paper.
 
 **Surface Erosion:**     $\mathcal{O}_e^{n_e}(\cdot)$    [script]
 
-**Restricted Surface Dilation:**     $$ \mathcal{O}_{rd}(M_{i,c}^{out} | \Omega_{surf}, \mathfrak{B}) = \mathcal{O}_d^\infty(M_{i,c}^{out} | \Omega_{surf}^\mathfrak{B})$$     
+**Restricted Surface Dilation:**     $ \mathcal{O}_{rd}(M_{i,c}^{out} | \Omega_{surf}, \mathfrak{B}) = \mathcal{O}_d^\infty(M_{i,c}^{out} | \Omega_{surf}^\mathfrak{B})$     
 
-$ \mathcal{O}_{rd}(M_{i,c}^{out} | \Omega_{surf}, \mathfrak{B}) = \mathcal{O}_d^\infty(M_{i,c}^{out} | \Omega_{surf}^\mathfrak{B})$  
+$\Omega_{surf}$
 
-$ A | B $
-
-$ A \; | \; B$
-
-$ A \mid B $
-
-$ A \| B $
-
-$\mathfrak{B}$
-
-
+$\omega_{surf}$
 
  [script]
 
