@@ -5,15 +5,9 @@ conda activate CartiMorphToolbox-nnUNet
 
 # e.g. LD_LIBRARY_PATH="~/Documents/anaconda3/envs/CartiMorphToolbox-nnUNet/lib/python3.10/site-packages/nvidia/cublas/lib:$LD_LIBRARY_PATH" 
 export LD_LIBRARY_PATH="path/to/anaconda3/envs/CartiMorphToolbox-nnUNet/lib/python3.10/site-packages/nvidia/cublas/lib:$LD_LIBRARY_PATH" 
- 
+
 # 3-digit task ID
 export nnUNet_taskID='106' 
-# task name should be in the form of Task[nnUNet_taskID]_[task-name]
-export nnUNet_taskName='Task106_test6' 
-# select GPU
-export gpuIDs='0' 
-# total training epoch
-export epoch=1000 
 
 # ----------------------------------------------
 # set paths for CartiMorph-nnUNet, a work based on nnUNet
@@ -32,19 +26,5 @@ export nnUNet_preprocessed='path/to/preprocessed/data/folder/nnUNet_preprocessed
 export RESULTS_FOLDER='path/to/result/folder/nnUNet_trained_models' 
 # ----------------------------------------------
 
-export nnUNet_trainer='nnUNetTrainerV2' 
-export nnUNet_architecture='3d_fullres' 
-
-# [Logging] 
-export log_file='path/to/log/file/training_3dF.log' 
-
-# ----------------------------------------------
-# Model ensemble or not
-# ----------------------------------------------
-# [option 1] only train the 3dF model
-export nnUNet_fold='all' 
-CUDA_VISIBLE_DEVICES=$gpuIDs CartiMorph_nnUNet_train $nnUNet_architecture $nnUNet_trainer $nnUNet_taskID $nnUNet_fold --epoch $epoch 2>&1 > "$log_file"  
-
-# [option 2] train models in the 5-fold setting for model ensemble
-# CUDA_VISIBLE_DEVICES=$gpuIDs CartiMorph_nnUNet_train $nnUNet_architecture $nnUNet_trainer $nnUNet_taskID --epoch $epoch --npz 2>&1 > "$log_file" 
-# ----------------------------------------------
+# find the best configuration from {2d 3d_fullres, 3d_lowres, 3d_cascade_fullres}
+CartiMorph_nnUNet_find_best_configuration -m 2d 3d_fullres 3d_lowres 3d_cascade_fullres -t $nnUNet_taskID

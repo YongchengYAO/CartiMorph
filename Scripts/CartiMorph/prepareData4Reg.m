@@ -44,9 +44,17 @@ kneeJointInfo_Tr = CM_estKneeJointSize(dir_seg_in, config_ROI_label, config_ROI_
 path_kneeJointInfo_Tr = fullfile(dir_info_out, "kneeJointInfo_Tr.mat");
 save(path_kneeJointInfo_Tr, '-struct', "kneeJointInfo_Tr");
 
-% image preprocessing: masking, downsampling, cropping, image intensity normalization
-cropRange_Tr = CM_imgPreprocess_mdcn(dir_seg_in, dir_img_in, dir_seg_out, dir_img_out,...
-    config_imgSize_out, kneeJointInfo_Tr, 4);
+% ---------------------------------------------------------------------------
+% image preprocessing 
+% ---------------------------------------------------------------------------
+% [option 1] fixed downsampling factor: masking, downsampling, cropping, image intensity normalization
+cropRange_Tr = CM_imgPreprocess_mdcn_fixDownFactor(dir_seg_in, dir_img_in, dir_seg_out, dir_img_out,...
+    config_imgSize_out, kneeJointInfo_Tr, 2);
+
+% % [option 2] automatic downsampling factor: masking, downsampling, cropping, image intensity normalization
+% cropRange_Tr = CM_imgPreprocess_mdcn(dir_seg_in, dir_img_in, dir_seg_out, dir_img_out,...
+%     config_imgSize_out, kneeJointInfo_Tr, 4);
+% ---------------------------------------------------------------------------
 
 % save cropping range (in the downsampled image)
 path_cropRange_Tr = fullfile(dir_info_out, "cropRange_Tr.mat");

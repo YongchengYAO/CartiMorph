@@ -5,11 +5,12 @@ conda activate CartiMorphToolbox-Vxm
 
 # e.g. LD_LIBRARY_PATH="~/Documents/anaconda3/envs/CartiMorphToolbox-Vxm/lib/python3.10/site-packages/nvidia/cublas/lib:$LD_LIBRARY_PATH" 
 export LD_LIBRARY_PATH="path/to/anaconda3/envs/CartiMorphToolbox-Vxm/lib/python3.10/site-packages/nvidia/cublas/lib:$LD_LIBRARY_PATH" 
- 
-# [Folders] 
+
+# [Folder]
 # path to the folder containing the pyhton script "train_tempLearnModel.py"
 # e.g. dir_scripts='~/Documents/CartiMorph/Scripts/CartiMorph-vxm' 
 export dir_scripts='path/to/python/script/folder' 
+# model folder
 # e.g. dir_model='~/Documents/CartiMorph/Models_training/vxm/vxm_models'
 export dir_model='path/to/model/folder' 
 
@@ -26,12 +27,20 @@ export imgLoss=mse
 export gpuIDs=0
 export batch_size=1
 # total training epoch
-export epochs=500
-export steps_per_epoch=103
+export epochs=1000
+export steps_per_epoch=100
 
 # [Logging] 
 export log_file='path/to/log/file/training_scratch.log' 
- 
+
+
+if [ ! -d $dir_model ]; then
+  # if the folder doesn't exist, create it
+  mkdir -p $dir_model
+  echo "Folder created: $dir_model"
+else
+  echo "Folder already exists: $dir_model"
+fi
 
 # set the voxel size of the learned template image
 # - it is for better visualization

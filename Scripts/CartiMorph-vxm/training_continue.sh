@@ -10,6 +10,7 @@ export LD_LIBRARY_PATH="path/to/anaconda3/envs/CartiMorphToolbox-Vxm/lib/python3
 # path to the folder containing the pyhton script "train_tempLearnModel.py"
 # e.g. dir_scripts='~/Documents/CartiMorph/Scripts/CartiMorph-vxm' 
 export dir_scripts='path/to/python/script/folder' 
+# e.g. dir_model='~/Documents/CartiMorph/Models_training/vxm/vxm_models'
 export dir_model='path/to/model/folder' 
 
 # [Data] 

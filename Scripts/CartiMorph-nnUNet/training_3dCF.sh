@@ -33,18 +33,10 @@ export RESULTS_FOLDER='path/to/result/folder/nnUNet_trained_models'
 # ----------------------------------------------
 
 export nnUNet_trainer='nnUNetTrainerV2' 
-export nnUNet_architecture='3d_fullres' 
+export nnUNet_architecture='3d_cascade_fullres' 
 
 # [Logging] 
-export log_file='path/to/log/file/training_3dF.log' 
-
-# ----------------------------------------------
-# Model ensemble or not
-# ----------------------------------------------
-# [option 1] only train the 3dF model
-export nnUNet_fold='all' 
-CUDA_VISIBLE_DEVICES=$gpuIDs CartiMorph_nnUNet_train $nnUNet_architecture $nnUNet_trainer $nnUNet_taskID $nnUNet_fold --epoch $epoch 2>&1 > "$log_file"  
-
-# [option 2] train models in the 5-fold setting for model ensemble
-# CUDA_VISIBLE_DEVICES=$gpuIDs CartiMorph_nnUNet_train $nnUNet_architecture $nnUNet_trainer $nnUNet_taskID --epoch $epoch --npz 2>&1 > "$log_file" 
-# ----------------------------------------------
+export log_file='path/to/log/file/training_3dCF.log' 
+ 
+# the command below is in the 5-fold validation setting
+CUDA_VISIBLE_DEVICES=$gpuIDs CartiMorph_nnUNet_train $nnUNet_architecture $nnUNet_trainer $nnUNet_taskID --epoch $epoch --npz 2>&1 > "$log_file" 

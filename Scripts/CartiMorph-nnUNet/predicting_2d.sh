@@ -14,7 +14,7 @@ export LD_LIBRARY_PATH="path/to/anaconda3/envs/CartiMorphToolbox-nnUNet/lib/pyth
 export nnUNet_prediction_in='path/to/inference/image/folder' 
 
 # model prediction folder
-# e.g. nnUNet_prediction_out='~/Documents/CartiMorph/Models_training/nnUNet/nnUNet_prediction/Task106_test6/inference/3dF' 
+# e.g. nnUNet_prediction_out='~/Documents/CartiMorph/Models_training/nnUNet/nnUNet_prediction/Task106_test6/inference/2d' 
 export nnUNet_prediction_out='path/to/model/prediction/folder'
 
 # task name should be in the form of Task[xxx]_[task-name]
@@ -41,9 +41,9 @@ export RESULTS_FOLDER='path/to/result/folder/nnUNet_trained_models'
 # ----------------------------------------------
 
 # [Logging] 
-export log_file='path/to/log/file/predicting_3dF.log' 
+export log_file='path/to/log/file/predicting_2d.log' 
 
-export nnUNet_archi='3d_fullres' 
+export nnUNet_archi='2d' 
 export nnUNet_plans_identifier='nnUNetPlansv2.1' 
 
 
@@ -63,5 +63,5 @@ export nnUNet_fold='all'
 CUDA_VISIBLE_DEVICES=$gpuIDs CartiMorph_nnUNet_predict -i "$nnUNet_prediction_in" -o "$nnUNet_prediction_out" -f "$nnUNet_fold" -tr nnUNetTrainerV2 -m "$nnUNet_archi" -p "$nnUNet_plans_identifier" -t "$nnUNet_taskName" 2>&1 > "$log_file"  
 
 # yes
-# CUDA_VISIBLE_DEVICES=$gpuIDs CartiMorph_nnUNet_predict -i "$nnUNet_prediction_in" -o "$nnUNet_prediction_out" -tr nnUNetTrainerV2 -m "$nnUNet_archi" -p "$nnUNet_plans_identifier" -t "$nnUNet_taskName" 2>&1 > "$log_file"  
+# CUDA_VISIBLE_DEVICES=$gpuIDs CartiMorph_nnUNet_predict -i "$nnUNet_prediction_in" -o "$nnUNet_prediction_out" -tr nnUNetTrainerV2 -m "$nnUNet_archi" -p "$nnUNet_plans_identifier" -t "$nnUNet_taskName" 2>&1 > "$log_file" 
 # ----------------------------------------------

@@ -1,3 +1,6 @@
+# it is used for training a "3d_cascade_fullres" (3dCF) model
+# the trained '3d_lowres' model is part of the 3dCF model
+
 # e.g. ~/Documents/anaconda3/etc/profile.d/conda.sh 
 source /path/to/anaconda3/etc/profile.d/conda.sh 
 
@@ -33,18 +36,11 @@ export RESULTS_FOLDER='path/to/result/folder/nnUNet_trained_models'
 # ----------------------------------------------
 
 export nnUNet_trainer='nnUNetTrainerV2' 
-export nnUNet_architecture='3d_fullres' 
+export nnUNet_architecture='3d_lowres' 
 
 # [Logging] 
-export log_file='path/to/log/file/training_3dF.log' 
+export log_file='path/to/log/file/training_3dL.log'
 
-# ----------------------------------------------
-# Model ensemble or not
-# ----------------------------------------------
-# [option 1] only train the 3dF model
-export nnUNet_fold='all' 
-CUDA_VISIBLE_DEVICES=$gpuIDs CartiMorph_nnUNet_train $nnUNet_architecture $nnUNet_trainer $nnUNet_taskID $nnUNet_fold --epoch $epoch 2>&1 > "$log_file"  
-
-# [option 2] train models in the 5-fold setting for model ensemble
-# CUDA_VISIBLE_DEVICES=$gpuIDs CartiMorph_nnUNet_train $nnUNet_architecture $nnUNet_trainer $nnUNet_taskID --epoch $epoch --npz 2>&1 > "$log_file" 
-# ----------------------------------------------
+# DO NOT set fold to "all" as 5-fold validation is required for training a "3d_cascade_fullres" model
+# the command below is in the 5-fold validation setting
+CUDA_VISIBLE_DEVICES=$gpuIDs CartiMorph_nnUNet_train $nnUNet_architecture $nnUNet_trainer $nnUNet_taskID --epoch $epoch --npz 2>&1 > "$log_file" 
