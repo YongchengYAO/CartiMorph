@@ -145,13 +145,15 @@ Use our script ([imgStandardisation.m](https://github.com/YongchengYAO/CartiMorp
 
 We adopt the mathematical notations as those used in the paper.
 
-**Surface Closing:**     $ \mathcal{O}_c(\cdot | \cdot)$     [script]
+**Surface Closing:**     $\mathcal{O}_c(\cdot | \cdot)$     [script]
 
 **Surface Dilation:**     $\mathcal{O}_d^{n_d}(\cdot | \cdot)$    [script]
 
 **Surface Erosion:**     $\mathcal{O}_e^{n_e}(\cdot)$    [script]
 
-**Restricted Surface Dilation:**     $ \mathcal{O}_{rd}(\cdot | {\cdot, \cdot})$     [script]
+**Restricted Surface Dilation:**     $\mathcal{O}_{rd}(\cdot | {\cdot, \cdot})$     [script]
+
+$\mathcal{O}_{rd}(M_{i,c}^{out} \; | \; \Omega_{surf}, \mathfrak{B}) = \mathcal{O}_d^\infty(M_{i,c}^{out} \; | \; \Omega_{surf}^\mathfrak{B})$
 
 **Surface Hole Filling:**     $\mathcal{O}_{sf}(\cdot , \cdot)$      [script]
 
