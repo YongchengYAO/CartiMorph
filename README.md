@@ -219,7 +219,7 @@ We adopt the mathematical notations as those used in the paper.
 - **Surface Normal Orientation Correction**:     $\mathcal{O}_{oc}(\cdot)$     [`CM_cal_reorientSN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_reorientSN.m)    
 - **Surface Normal Spatial Smoothing**:     $\mathcal{O}_{ss}(\cdot)$     [`CM_cal_smoothSN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_smoothSN.m)
 - **Thickness Mapping**:     $\mathcal{O}_{th}(\cdot)$     [`CM_cal_thicknessMap_SN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_thicknessMap_SN.m)  
-- **Surface Hole Filling:**     $\mathcal{O}_{sf}(\cdot , \cdot) = \mathcal{O}_{curve}(\cdot , \cdot) \circ \mathcal{O}_{conn}(\cdot , \cdot)$    
+- **Surface Hole Filling:**     $\mathcal{O}_{sf}(\cdot , \cdot)$    
   - **Connectivity-based Surface Hole Filling:**     $\mathcal{O}_{conn}(\cdot , \cdot)$      [`CM_cal_reconCartDefect_conn.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_reconCartDefect_conn.m)
   - **Curve-fitting-based Surface Hole Filling:**     $\mathcal{O}_{curve}(\cdot , \cdot)$ 
     - Femoral Cartilage: [`CM_cal_reconCartDefect_curve_FC.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_reconCartDefect_curve_FC.m)
