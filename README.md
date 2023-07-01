@@ -2,10 +2,6 @@
 
 [Python: 3.10] [Matlab: 2022b]
 
-Code and documents will be available when our paper is published.
-
-[!] I’ll update this repo by 30 June 2023. Stay tuned!
-
 
 
 ## 1. Publication
