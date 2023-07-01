@@ -63,7 +63,7 @@ To reproduce and validate our work, follow the steps to prepare data.
 
 2. Download segmentation masks in `.raw`/`.mhd` format from the OAI-ZIB dataset
 
-3. Use our [script](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/data/raw2nii.py) (`raw2nii.py`) to convert `.raw`/`.mhd` files to `.nii.gz` files
+3. Use our script ([`raw2nii.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/data/raw2nii.py)) to convert `.raw`/`.mhd` files to `.nii.gz` files
 
    ```bash
    python raw2nii.py --path_raw /path/to/raw-mhd/folder --path_nii /path/to/nii/folder
@@ -71,11 +71,11 @@ To reproduce and validate our work, follow the steps to prepare data.
    python raw2nii.py -i /path/to/raw-mhd/folder -o /path/to/nii/folder
    ```
 
-4. Use our [script](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/data/copyAffineMat_img2seg.m) (`copyAffineMat_img2seg.m`) to modify the affine transformation matrix in the NIfTI header of the segmentation mask 
+4. Use our script ([`copyAffineMat_img2seg.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/data/copyAffineMat_img2seg.m)) to modify the affine transformation matrix in the NIfTI header of the segmentation mask 
 
    - that’s because the affine matrix is corrupt in `.mhd` files
 
-5. Use our [script](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/data/splitTC.m) (`splitTC.m`) to split the tibial cartilage into medial tibial cartilage (mTC) and lateral tibial cartilage (lTC)
+5. Use our script ([`splitTC.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/data/splitTC.m)) to split the tibial cartilage into medial tibial cartilage (mTC) and lateral tibial cartilage (lTC)
 
    - you need to use the [subject information table](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/OAIZIB_subject_info.xlsx)
 
@@ -99,7 +99,7 @@ If you want to download the modified segmentation masks in `.nii.gz`, please fol
 
 By implementing an image standardization scheme, the proposed framework is capable of processing images of different orientations and sizes. This involves reorienting all images to the RAS+ direction, where the first, second, and third dimensions of the image array correspond to the left-right, posterior-anterior, and inferior-superior directions, respectively.
 
-Use our script (`imgStandardisation.m`) to standardise images and segmentation labels before model training and other algorithms. Use the processed images in the remaining experiments.
+Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/imgStandardisation.m)) to standardise images and segmentation labels before model training and other algorithms. Use the processed images in the remaining experiments.
 
 
 
@@ -107,19 +107,19 @@ Use our script (`imgStandardisation.m`) to standardise images and segmentation l
 
 **Model Training:**
 
-1. Setup a Conda environment using our script (`envSetup_CartiMorph-vxm.sh`) – it will create an virtual environment `CartiMorphToolbox-Vxm` and install [`CartiMorph-vxm`](https://github.com/YongchengYAO/CartiMorph-vxm)
+1. Setup a Conda environment using our script ([`envSetup_CartiMorph-vxm.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-vxm.sh)) – it will create an virtual environment `CartiMorphToolbox-Vxm` and install [`CartiMorph-vxm`](https://github.com/YongchengYAO/CartiMorph-vxm)
 
-2. Prepare training data using the [image list](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset1.xlsx) and our script (`prepareData4Reg.m`)
+2. Prepare training data using the [image list](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset1.xlsx) and our script ([`prepareData4Reg.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/prepareData4Reg.m))
 
 3. Train a model to learn a representative template image
 
-   - `training_scratch.sh`: train a model from scratch
-   - `training_continue.sh`: continue training
+   - [`training_scratch.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/training_scratch.sh): train a model from scratch
+   - [`training_continue.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/training_continue.sh): continue training
 
 4. Construct the segmentation mask for the learning template image
 
-   1. Warp manual segmentation labels of training images to the template image space with our script (`predicting_getTempSeg.sh`)
-   2. Construct template segmentation with out script (`constructTempSeg.m`)
+   1. Warp manual segmentation labels of training images to the template image space with our script ([`predicting_getTempSeg.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/predicting_getTempSeg.sh))
+   2. Construct template segmentation with out script ([`constructTempSeg.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/constructTempSeg.m))
 
    
 
@@ -127,11 +127,11 @@ Use our script (`imgStandardisation.m`) to standardise images and segmentation l
 
 **Model Training:**
 
-1. Setup a Conda environment using our script (`envSetup_CartiMorph-nnUNet.sh`) – it will create an virtual environment `CartiMorphToolbox-nnUNet` and install [`CartiMorph-nnUNet`](https://github.com/YongchengYAO/CartiMorph-nnUNet)
+1. Setup a Conda environment using our script ([`envSetup_CartiMorph-nnUNet.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-nnUNet.sh)) – it will create an virtual environment `CartiMorphToolbox-nnUNet` and install [`CartiMorph-nnUNet`](https://github.com/YongchengYAO/CartiMorph-nnUNet)
 2. Image preprocessing
-   1. modify `generate_dataset_json.sh` and `generate_dataset_json.py`, then run `generate_dataset_json.sh`
-   2. preprocess data uisng our script (`planning_preprocessing.sh`)
-3. Train the model with our script (`training_3dF.sh`)
+   1. modify [`generate_dataset_json.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-nnUNet/generate_dataset_json.sh) and [`generate_dataset_json.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-nnUNet/generate_dataset_json.py), then run `generate_dataset_json.sh`
+   2. preprocess data uisng our script ([`planning_preprocessing.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-nnUNet/planning_preprocessing.sh))
+3. Train the model with our script ([`training_3dF.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-nnUNet/training_3dF.sh))
 
 
 
@@ -145,19 +145,13 @@ Use our script (`imgStandardisation.m`) to standardise images and segmentation l
 
 We adopt the mathematical notations as those used in the paper.
 
-**Surface Closing:**     $ \mathcal{O}_c(M_{i,c}^{in} | \Omega_{surf}) = \mathcal{O}_e^{n_e}( \mathcal{O}_d^{n_d}(M_{i,c}^{in} | \Omega_{surf}) )$     [script]
+**Surface Closing:**     $ \mathcal{O}_c(\cdot | \cdot)$     [script]
 
-**Surface Dilation:**     $\mathcal{O}_d^{n_d}(M_{i,c}^{in} | \Omega_{surf})$    [script]
+**Surface Dilation:**     $\mathcal{O}_d^{n_d}(\cdot | \cdot)$    [script]
 
 **Surface Erosion:**     $\mathcal{O}_e^{n_e}(\cdot)$    [script]
 
-**Restricted Surface Dilation:**     $ \mathcal{O}_{rd}(M_{i,c}^{out} | \Omega_{surf}, \mathfrak{B}) = \mathcal{O}_d^\infty(M_{i,c}^{out} | \Omega_{surf}^\mathfrak{B})$     
-
-$\Omega_{surf}$
-
-$\omega_{surf}$
-
- [script]
+**Restricted Surface Dilation:**     $ \mathcal{O}_{rd}(\cdot | \cdot, \cdot)$     [script]
 
 **Surface Hole Filling:**     $\mathcal{O}_{sf}(\cdot , \cdot)$      [script]
 
