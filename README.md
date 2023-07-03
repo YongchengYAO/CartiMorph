@@ -6,10 +6,6 @@ This document provides the code and experimental results of our paper. We develo
 
 
 
-[TOC]
-
-
-
 ## 1. Publication
 
 **CartiMorph: a framework for automated knee articular cartilage morphometrics** (under review)
