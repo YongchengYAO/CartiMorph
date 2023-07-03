@@ -2,6 +2,12 @@
 
 [Python: 3.10] [Matlab: 2022b]
 
+This document provides the code and experimental results of our paper. We developed the **CartiMorph** framework in a hybrid programming environment of Python and Matlab. If you are interested in using **CartiMorph** for your research project, don’t hesitate to try our user-friendly software [**CartiMorph Toolbox**](https://github.com/YongchengYAO/CartiMorph-Toolbox).
+
+
+
+[TOC]
+
 
 
 ## 1. Publication
@@ -9,8 +15,8 @@
 **CartiMorph: a framework for automated knee articular cartilage morphometrics** (under review)
 
 - a method for automated cartilage thickness mapping that is robust to cartilage lesions
-- a method for automated full-thicknes cartilage loss (FCL) estimation
-- a rule-based cartilage parcellation method that is robust ot FCL
+- a method for automated full-thickness cartilage loss (FCL) estimation
+- a rule-based cartilage parcellation method that is robust to FCL
 
 ![paper-CartiMorph-bw](README.assets/paper-CartiMorph-bw.png)
 
@@ -51,6 +57,8 @@ Data split in our study:
 | [dataset 4](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset4.xlsx) | framework evaluation  | 481  | 103/58/108/139/73 |
 | [dataset 5](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset5.xlsx) | FCL manual grading    | 79   | 2/1/7/22/47       |
 
+
+
 ### 2.2 Preparing Data
 
 To reproduce and validate our work, follow the steps to prepare data.
@@ -74,6 +82,8 @@ To reproduce and validate our work, follow the steps to prepare data.
 5. Use our script ([`splitTC.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/data/splitTC.m)) to split the tibial cartilage into medial tibial cartilage (mTC) and lateral tibial cartilage (lTC)
 
    - you need to use the [subject information table](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/OAIZIB_subject_info.xlsx)
+
+
 
 ### 2.3 CartiMorph Data Request
 
@@ -103,7 +113,7 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
 
 **Model Training:**
 
-1. Setup a Conda environment using our script ([`envSetup_CartiMorph-vxm.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-vxm.sh)) – it will create an virtual environment `CartiMorphToolbox-Vxm` and install [CartiMorph-vxm](https://github.com/YongchengYAO/CartiMorph-vxm)
+1. Setup a Conda environment using our script ([`envSetup_CartiMorph-vxm.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-vxm.sh)) – it will create a virtual environment `CartiMorphToolbox-Vxm` and install [CartiMorph-vxm](https://github.com/YongchengYAO/CartiMorph-vxm)
 
 2. Prepare training data ([dataset 1](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset1.xlsx)) using our script ([`prepareData4Reg.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/prepareData4Reg.m))
 
@@ -115,7 +125,7 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
 4. Construct the segmentation mask for the learning template image
 
    1. Warp manual segmentation labels of training images to the template image space with our script ([`predicting_getTempSeg.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/predicting_getTempSeg.sh))
-   2. Construct template segmentation with out script ([`constructTempSeg.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/constructTempSeg.m))
+   2. Construct template segmentation with our script ([`constructTempSeg.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/constructTempSeg.m))
 
    
 
@@ -123,7 +133,7 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
 
 **Model Training:**
 
-1. Setup a Conda environment using our script ([`envSetup_CartiMorph-nnUNet.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-nnUNet.sh)) – it will create an virtual environment `CartiMorphToolbox-nnUNet` and install [CartiMorph-nnUNet](https://github.com/YongchengYAO/CartiMorph-nnUNet)
+1. Setup a Conda environment using our script ([`envSetup_CartiMorph-nnUNet.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-nnUNet.sh)) – it will create a virtual environment `CartiMorphToolbox-nnUNet` and install [CartiMorph-nnUNet](https://github.com/YongchengYAO/CartiMorph-nnUNet)
 
 2. Image preprocessing
 
@@ -145,7 +155,7 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
       ```
    2. modify [`generate_dataset_json.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-nnUNet/generate_dataset_json.sh) and [`generate_dataset_json.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-nnUNet/generate_dataset_json.py), then run `generate_dataset_json.sh`
 
-   3. preprocess data uisng our script ([`planning_preprocessing.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-nnUNet/planning_preprocessing.sh))
+   3. preprocess data using our script ([`planning_preprocessing.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-nnUNet/planning_preprocessing.sh))
 
 3. Train the model with our script
 
@@ -162,7 +172,7 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
 
 **Model Ensemble:** (optional) 
 
-1. determine the best performing configurations with [`findBestConfig.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-nnUNet/findBestConfig.sh)
+1. determine the best-performing configurations with [`findBestConfig.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-nnUNet/findBestConfig.sh)
 2. model prediction with our script
    - 2d-3dCF model: ([`predicting_2d3dCF.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-nnUNet/predicting_2d3dCF.sh))
    - 2d-3dF model: ([`predicting_2d3dF.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-nnUNet/predicting_2d3dF.sh))
@@ -173,7 +183,7 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
 
 #### 3.4.1 Option 1: use the template learning model
 
-The template learning model is trained with the MR images of healthy subjects. The training dataset is relatively small, but consists of images of normal articular cartilages. The model is essentially a unsupervised registration model with a learnable template. Therefore we can use the model for image registration. 
+The template learning model is trained with the MR images of healthy subjects. The training dataset is relatively small but consists of images of normal articular cartilages. The model is essentially an unsupervised registration model with a learnable template. Therefore we can use the model for image registration. 
 
 **Model Inference:**
 
@@ -183,7 +193,7 @@ The template learning model is trained with the MR images of healthy subjects. T
 
 **Model Training:**
 
-1. Setup a Conda environment using our script ([`envSetup_CartiMorph-vxm.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-vxm.sh)) – it will create an virtual environment `CartiMorphToolbox-Vxm` and install [CartiMorph-vxm](https://github.com/YongchengYAO/CartiMorph-vxm)
+1. Setup a Conda environment using our script ([`envSetup_CartiMorph-vxm.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-vxm.sh)) – it will create a virtual environment `CartiMorphToolbox-Vxm` and install [CartiMorph-vxm](https://github.com/YongchengYAO/CartiMorph-vxm)
 
 2. Prepare training data ([dataset 2](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset1.xlsx)) using our script ([`prepareData4Reg.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/prepareData4Reg.m))
 
@@ -230,7 +240,7 @@ We adopt the mathematical notations as those used in the paper.
 
 
 
-## Experiment: Validation of FCL Estimation
+## 4. Experiment: Validation of FCL Estimation
 
 Three human raters graded the full-thickness cartilage loss (FCL)  into 11 categories independently. 
 
@@ -254,7 +264,7 @@ Semiquantitative measurements of the cartilage thickness, surface area, volume, 
 
   
 
-## Application
+## 5. Application
 
 [CartiMorph Toolbox](https://github.com/YongchengYAO/CartiMorph-Toolbox): a platform for model training, model inference, transfer learning, and medical image computing
 
