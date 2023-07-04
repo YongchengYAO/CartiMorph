@@ -8,7 +8,7 @@ This document provides the code and experimental results of our paper. We develo
 
 ## 1. Publication
 
-**CartiMorph: a framework for automated knee articular cartilage morphometrics** (under review)
+**CartiMorph: a framework for automated knee articular cartilage morphometrics** (MedIA, accepted)
 
 - a method for automated cartilage thickness mapping that is robust to cartilage lesions
 - a method for automated full-thickness cartilage loss (FCL) estimation
