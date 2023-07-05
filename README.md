@@ -277,6 +277,8 @@ Three human raters graded the full-thickness cartilage loss (FCL)  into 11 categ
 
 Semiquantitative measurements of the cartilage thickness, surface area, volume, and FCL were retrieved from the Pivotal Osteoarthritis Initiative Magnetic Resonance Imaging Analyses (POMA) dataset –  the “kmri_poma_tkr_chondrometrics” non-image dataset at https://nda.nih.gov/oai/
 
+For details on how to find matching cases and compile [dataset 4](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset4.xlsx), please go to the [page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/prepareData_FCL_validation).
+
 **Related Data:**
 
 - All metrics (Chondrometrics): [`Chondrometrics_AllMetrics.xlsx`](https://github.com/YongchengYAO/CartiMorph/blob/main/Experiment/FCL_validation/Chondrometrics/Chondrometrics_AllMetrics.xlsx)
