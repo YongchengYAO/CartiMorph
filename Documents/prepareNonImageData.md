@@ -15,7 +15,7 @@ The page will guide you through the steps to collect and merge non-image data fo
 
 ## Raw Non-Image Data from OAI
 
-1. Download the `OAICompleteData_SAS` from the [OAI dataset](https://pubdata.zib.de)
+1. Download the `OAICompleteData_SAS` from the [OAI dataset](https://nda.nih.gov/oai/)
 
 2. Convert the following `.sas7bdat` files to `.xlsx` using our script ([`sas2xlsx.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/data/sas2xlsx.py)):
 
@@ -42,6 +42,10 @@ The page will guide you through the steps to collect and merge non-image data fo
 ## Processed Data
 
 Data can be found [here](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/subject_info_source).
+
+
+
+[Back to the main document](https://github.com/YongchengYAO/CartiMorph/tree/main)
 
 
 
