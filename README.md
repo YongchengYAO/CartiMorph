@@ -190,6 +190,10 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
    - 2d-3dCF model: ([`predicting_2d3dCF.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-nnUNet/predicting_2d3dCF.sh))
    - 2d-3dF model: ([`predicting_2d3dF.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-nnUNet/predicting_2d3dF.sh))
 
+**Model Evaluation:**
+
+The model performance was evaluated by the Dice Similarity Coefficient (DSC) between the model prediction and manual segmentation. Use our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.sh)) to calculate the DSC for each subject and segmentation label.
+
 
 
 ### 3.4 Template-to-image Registration
@@ -201,6 +205,12 @@ The template learning model is trained with the MR images of healthy subjects. T
 **Model Inference:**
 
 - modify and run our script for template-to-image registration ([`predicting_warpTempSeg.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/predicting_warpTempSeg.sh))
+
+**Model Evaluation:**
+
+We want to measure the model efficiency in template-to-image registration where the moving image is the template. The model performance was evaluated by the DSC between the warped template segmentation and manual segmentation of the target image. Similarly, use our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.sh)) to calculate the DSC for each subject and segmentation label.
+
+
 
 #### 3.4.2 Option 2: train an image-to-image registration model with a diverse dataset
 
@@ -227,6 +237,10 @@ This is the method described in our paper.
    - Model-MSE: [`predicting_warpTempSeg_MSE.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/regModel/predicting_warpTempSeg_MSE.sh)
    - Model-MSE-x2: [`predicting_warpTempSeg_MSE_x2.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/regModel/predicting_warpTempSeg_MSE_x2.sh)
    - Model-LNCC-x2: [`predicting_warpTempSeg_LNCC_x2.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/regModel/predicting_warpTempSeg_LNCC_x2.sh)
+
+**Model Evaluation:**
+
+Although we have trained a model for image-to-image registration, we want to evaluate the model performance in template-to-image registration. In the model evaluation stage, we treated the learned template image as the moving image. The model performance was evaluated by the DSC between the warped template segmentation and manual segmentation of the target image. Similarly, use our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.sh)) to calculate the DSC for each subject and segmentation label.
 
 
 
@@ -281,7 +295,7 @@ Semiquantitative measurements of the cartilage thickness, surface area, volume, 
 
 ## 5. Application
 
-[CartiMorph Toolbox](https://github.com/YongchengYAO/CartiMorph-Toolbox): a platform for model training, model inference, transfer learning, and medical image computing
+[CartiMorph Toolbox](https://github.com/YongchengYAO/CartiMorph-Toolbox): a platform for knee osteoarthritis monitoring and treatments evaluation
 
 
 

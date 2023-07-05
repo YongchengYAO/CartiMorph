@@ -17,5 +17,5 @@ conda install python=3.10 -y
 conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia -y
 
 # nnUNet
-python -m pip install CartiMorph-nnUnet==1.7.3
+python -m pip install CartiMorph-nnUnet
 python -m pip install --upgrade git+https://github.com/FabianIsensee/hiddenlayer.git@more_plotted_details#egg=hiddenlayer
