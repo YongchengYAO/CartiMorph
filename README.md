@@ -2,7 +2,7 @@
 
 [Python: 3.10] [Matlab: 2022b]
 
-This document provides the code and experimental results of our paper. We developed the **CartiMorph** framework in a hybrid programming environment of Python and Matlab. If you are interested in using **CartiMorph** for your research project, don’t hesitate to try our user-friendly software [**CartiMorph Toolbox**](https://github.com/YongchengYAO/CartiMorph-Toolbox).
+This document provides the code and experimental results of our paper. We developed the **CartiMorph** framework in a hybrid programming environment of Python and Matlab. If you are interested in using **CartiMorph** for your research project, don’t hesitate to try our software [**CartiMorph Toolbox**](https://github.com/YongchengYAO/CartiMorph-Toolbox).
 
 
 
@@ -55,7 +55,24 @@ Data split in our study:
 
 
 
-### 2.2 Preparing Data
+### 2.2 Non-image Data
+
+We collected non-image data from the OAI dataset and created a [subject information table](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/OAIZIB_subject_info.xlsx) which contains the following fields:
+
+- `SubjectID`: a unique ID for each subject 
+- `Path`: the path of MR image in the OAI dataset (baseline cohort)
+- `MRBarCode`: a unique ID for each MR image, used to find corresponding no-image data
+- `KneeSide`: knee side (1 for right, 2 for left)
+- `KLGrade`: Kellgren-Lawrence grade
+- `Gender`: gender of the subject (1 for male, 2 for female)
+- `Age`: age of the subject
+- `BMI`: Body Mass Index of the subject
+
+For more details on the construction of the table, please refer to the [page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/prepareNonImageData.md).
+
+
+
+### 2.3 Preparing MRI Data
 
 To reproduce and validate our work, follow the steps to prepare data.
 
@@ -186,6 +203,8 @@ The template learning model is trained with the MR images of healthy subjects. T
 - modify and run our script for template-to-image registration ([`predicting_warpTempSeg.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/predicting_warpTempSeg.sh))
 
 #### 3.4.2 Option 2: train an image-to-image registration model with a diverse dataset
+
+This is the method described in our paper.
 
 **Model Training:**
 
