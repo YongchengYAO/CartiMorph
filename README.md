@@ -192,9 +192,7 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
 
 **Model Evaluation:**
 
-The model performance was evaluated by the Dice Similarity Coefficient (DSC) between the model prediction and manual segmentation. Use our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.sh)) to calculate the DSC for each subject and segmentation label.
-
-
+The model performance was evaluated by the Dice Similarity Coefficient (DSC) between the model prediction and manual segmentation. Use our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.py)) to calculate the DSC for each subject and segmentation label.
 
 ### 3.4 Template-to-image Registration
 
@@ -208,7 +206,7 @@ The template learning model is trained with the MR images of healthy subjects. T
 
 **Model Evaluation:**
 
-We want to measure the model efficiency in template-to-image registration where the moving image is the template. The model performance was evaluated by the DSC between the warped template segmentation and manual segmentation of the target image. Similarly, use our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.sh)) to calculate the DSC for each subject and segmentation label.
+We want to measure the model efficiency in template-to-image registration where the moving image is the template. The model performance was evaluated by the DSC between the warped template segmentation and manual segmentation of the target image. Similarly, use our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.py)) to calculate the DSC for each subject and segmentation label.
 
 
 
@@ -240,7 +238,7 @@ This is the method described in our paper.
 
 **Model Evaluation:**
 
-Although we have trained a model for image-to-image registration, we want to evaluate the model performance in template-to-image registration. In the model evaluation stage, we treated the learned template image as the moving image. The model performance was evaluated by the DSC between the warped template segmentation and manual segmentation of the target image. Similarly, use our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.sh)) to calculate the DSC for each subject and segmentation label.
+Although we have trained a model for image-to-image registration, we want to evaluate the model performance in template-to-image registration. In the model evaluation stage, we treated the learned template image as the moving image. The model performance was evaluated by the DSC between the warped template segmentation and manual segmentation of the target image. Similarly, use our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.py)) to calculate the DSC for each subject and segmentation label.
 
 
 
@@ -307,4 +305,3 @@ Semiquantitative measurements of the cartilage thickness, surface area, volume, 
 - Our work is partially based on the [nnUNet](https://github.com/MIC-DKFZ/nnUNet)
 - Our work is partially based on the [VoxelMorph](https://github.com/voxelmorph/voxelmorph)
 - Our work is partially based on the [Mesh Processing Toolbox](https://github.com/NicolasDouillet/mesh_processing_toolbox)
-
