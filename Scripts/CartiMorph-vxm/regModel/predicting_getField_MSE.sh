@@ -12,10 +12,10 @@ export LD_LIBRARY_PATH="path/to/anaconda3/envs/CartiMorphToolbox-Vxm/lib/python3
 export dir_scripts='path/to/python/script/folder'
 # folder for inference image
 export dir_img="path/to/inference/image/folder"
-# ouput folder for the warpped template image
-export dir_warppedTemp="path/to/warpped/template/image/folder"
+# ouput folder for the warped template image
+export dir_warpedTemp="path/to/warped/template/image/folder"
 # output folder for warping field
-export dir_warppingField="path/to/warpping/field/folder"
+export dir_warpingField="path/to/warping/field/folder"
 
 # GPU
 export gpuIDs=0
@@ -31,20 +31,20 @@ export path_model='path/to/model/file'
 export log_file='path/to/log/file/predicting_getField_MSE.log' 
 
 s
-if [ ! -d $dir_warppedTemp ]; then
+if [ ! -d $dir_warpedTemp ]; then
   # if the folder doesn't exist, create it
-  mkdir -p $dir_warppedTemp
-  echo "Folder created: $dir_warppedTemp"
+  mkdir -p $dir_warpedTemp
+  echo "Folder created: $dir_warpedTemp"
 else
-  echo "Folder already exists: $dir_warppedTemp"
+  echo "Folder already exists: $dir_warpedTemp"
 fi
 
-if [ ! -d $dir_warppingField ]; then
+if [ ! -d $dir_warpingField ]; then
   # if the folder doesn't exist, create it
-  mkdir -p $dir_warppingField
-  echo "Folder created: $dir_warppingField"
+  mkdir -p $dir_warpingField
+  echo "Folder created: $dir_warpingField"
 else
-  echo "Folder already exists: $dir_warppingField"
+  echo "Folder already exists: $dir_warpingField"
 fi
 
 # ====== registration =========================
@@ -56,11 +56,11 @@ do
 
     # [Output]
     # warping field
-    export img_warppingField="$dir_warppingField/${img##*/}"
+    export img_warpingField="$dir_warpingField/${img##*/}"
     # the warped template
-    export img_warppedTemp="$dir_warppedTemp/${img##*/}"
+    export img_warpedTemp="$dir_warpedTemp/${img##*/}"
 
     # create knee template (save log file)
-    "$dir_scripts"/inference_register.py --gpu "$gpuIDs" --moving "$img_template" --fixed "$img_kneeMRI" --model "$path_model" --moved "$img_warppedTemp" --warp "$img_warppingField" 2>&1 >> "$log_file"
+    "$dir_scripts"/inference_register.py --gpu "$gpuIDs" --moving "$img_template" --fixed "$img_kneeMRI" --model "$path_model" --moved "$img_warpedTemp" --warp "$img_warpingField" 2>&1 >> "$log_file"
 done
 # ====== registration =========================

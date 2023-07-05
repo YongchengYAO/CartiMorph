@@ -11,8 +11,8 @@ import tensorflow as tf
 parser = argparse.ArgumentParser()
 parser.add_argument('--dir_targetImg', required=True, help='folder of the target images')
 parser.add_argument('--file_TempSeg', required=True, help='the template segmentation')
-parser.add_argument('--dir_warppedTempSeg', required=True, help='folder of the warpped template segmentation masks')
-parser.add_argument('--dir_warppingField', required=True, help='folder of the warpping field')
+parser.add_argument('--dir_warpedTempSeg', required=True, help='folder of the warped template segmentation masks')
+parser.add_argument('--dir_warpingField', required=True, help='folder of the warping field')
 parser.add_argument('--file_model', required=True, help='the template learning model')
 parser.add_argument('-g', '--gpuIDs', help='GPU ID(s) - if not supplied, CPU is used')
 parser.add_argument('--multichannel', action='store_true',
@@ -39,16 +39,16 @@ for file_targetImg in glob.glob(os.path.join(args.dir_targetImg, "*.nii.gz")) + 
     with tf.device(device):
         # load model and predict
         config = dict(inshape=inshape)
-        warppingField = vxm.networks.TemplateCreation.load(args.file_model, **config).register_tmp2img(targetImg)
-        warppedTempSeg = vxm.networks.Transform(TempSeg.shape[1:-1],
+        warpingField = vxm.networks.TemplateCreation.load(args.file_model, **config).register_tmp2img(targetImg)
+        warpedTempSeg = vxm.networks.Transform(TempSeg.shape[1:-1],
                                        interp_method="nearest",
-                                       nb_feats=TempSeg.shape[-1]).predict([TempSeg, warppingField])
+                                       nb_feats=TempSeg.shape[-1]).predict([TempSeg, warpingField])
 
     # save the wrapped atlas
     tmp, name_targetImg = os.path.split(file_targetImg)
-    file_warppedTempSeg = os.path.join(args.dir_warppedTempSeg, name_targetImg)
-    vxm.py.utils.save_volfile(warppedTempSeg.squeeze(), file_warppedTempSeg, targetAffine)
+    file_warpedTempSeg = os.path.join(args.dir_warpedTempSeg, name_targetImg)
+    vxm.py.utils.save_volfile(warpedTempSeg.squeeze(), file_warpedTempSeg, targetAffine)
 
-    # save the warpping field
-    file_warppingField = os.path.join(args.dir_warppingField, name_targetImg)
-    vxm.py.utils.save_volfile(warppingField.squeeze(), file_warppingField, targetAffine)
+    # save the warping field
+    file_warpingField = os.path.join(args.dir_warpingField, name_targetImg)
+    vxm.py.utils.save_volfile(warpingField.squeeze(), file_warpingField, targetAffine)

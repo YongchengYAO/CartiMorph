@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--file_targetTemp', required=True, help='target template')
 parser.add_argument('--file_sourceImg', required=True, help='source image')
 parser.add_argument('--file_sourceLabel', required=True, help='the segmentation label of the source image')
-parser.add_argument('--file_warppedLabel', required=True, help='the warpped segmentation label')
+parser.add_argument('--file_warpedLabel', required=True, help='the warped segmentation label')
 parser.add_argument('--file_model', required=True, help='the template learning model')
 parser.add_argument('-g', '--gpuIDs', help='GPU ID(s) - if not supplied, CPU is used')
 parser.add_argument('--multichannel', action='store_true',
@@ -36,10 +36,10 @@ nb_feats = sourceImg.shape[-1]
 with tf.device(device):
     # load model and predict
     config = dict(inshape=inshape)
-    warppingField = vxm.networks.TemplateCreation.load(args.file_model, **config).register_img2tmp(sourceImg)
-    warppedLabel = vxm.networks.Transform(sourceLabel.shape[1:-1],
+    warpingField = vxm.networks.TemplateCreation.load(args.file_model, **config).register_img2tmp(sourceImg)
+    warpedLabel = vxm.networks.Transform(sourceLabel.shape[1:-1],
                                    interp_method="nearest",
-                                   nb_feats=sourceLabel.shape[-1]).predict([sourceLabel, warppingField])
+                                   nb_feats=sourceLabel.shape[-1]).predict([sourceLabel, warpingField])
 
 # save the wrapped segmentation
-vxm.py.utils.save_volfile(warppedLabel.squeeze(), args.file_warppedLabel, targetAffine)
+vxm.py.utils.save_volfile(warpedLabel.squeeze(), args.file_warpedLabel, targetAffine)

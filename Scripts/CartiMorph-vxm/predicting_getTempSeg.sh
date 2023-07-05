@@ -16,8 +16,8 @@ export dir_sourceImgs="path/to/training/images"
 # folder of the segmentation masks of training images
 export dir_sourceLabels="path/to/training/segmentations" 
 
-# folder of the output segmentation masks warpped to the template image space
-export dir_warppedLabels="path/to/warpped/segmentations" 
+# folder of the output segmentation masks warped to the template image space
+export dir_warpedLabels="path/to/warped/segmentations" 
 
 # trained model
 export file_model='path/to/model/xxxxxx.h5' 
@@ -33,7 +33,7 @@ for img in $dir_sourceImgs/*.nii.gz
 do 
     export file_sourceImg="$dir_sourceImgs/${img##*/}" 
     export file_sourceLabel="$dir_sourceLabels/${img##*/}" 
-    export file_warppedLabel="$dir_warppedLabels/${img##*/}" 
-    "$dir_scripts"/inference_img2temp_warpLabel.py --file_targetTemp "$file_targetTemp" --file_sourceImg "$file_sourceImg" --file_sourceLabel "$file_sourceLabel" --file_warppedLabel "$file_warppedLabel" --file_model "$file_model" --gpuIDs "$gpuIDs" 
+    export file_warpedLabel="$dir_warpedLabels/${img##*/}" 
+    "$dir_scripts"/inference_img2temp_warpLabel.py --file_targetTemp "$file_targetTemp" --file_sourceImg "$file_sourceImg" --file_sourceLabel "$file_sourceLabel" --file_warpedLabel "$file_warpedLabel" --file_model "$file_model" --gpuIDs "$gpuIDs" 
 done 
 # ====== registration ========================= 
