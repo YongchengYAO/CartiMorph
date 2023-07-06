@@ -279,7 +279,7 @@ We open-source the code with the hope of advancing medical image analysis techni
 
 In our study, we compared the rule-based and atlas-based cartilage parcellation methods by quantitative evaluation and visual inspection. 
 
-- **Quantitative Evaluation**: We evaluated the volume overlap between the parcellation outputs of the compared methods by DSC. Results show that the discrepancy between the compared methods increased as the cartilage defects increased (from KL0 to KL4).
+- **Quantitative Evaluation**: We evaluated the DSC between the parcellation outputs of the compared methods with our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.py)). Results show that the discrepancy between the compared methods increased as the cartilage defects increased (from KL0 to KL4).
 - **Visual Inspection**: The cartilage parcellation from the rule-based method is consistent with the subregion definition despite the severity of cartilage lesions.
 
 
