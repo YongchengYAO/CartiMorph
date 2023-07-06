@@ -284,13 +284,7 @@ In our study, we compared the rule-based and atlas-based cartilage parcellation 
 
 
 
-## 5. Experiment: Effectiveness of Segmentation Network
-
-
-
-
-
-## 6. Experiment: Validation of FCL Estimation
+## 5. Experiment: Validation of FCL Estimation
 
 Three human raters graded the full-thickness cartilage loss (FCL)  into 11 categories independently. 
 
@@ -316,13 +310,13 @@ For details on how to find matching cases and compile [dataset 5](https://github
 
   
 
-## 7. FAQ
+## 6. FAQ
 
 For some frequently asked questions, please go to the [FAQ page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/FAQ.md).
 
 
 
-## 8. Application
+## 7. Application
 
 [CartiMorph Toolbox](https://github.com/YongchengYAO/CartiMorph-Toolbox): a platform for knee osteoarthritis monitoring and treatments evaluation
 
