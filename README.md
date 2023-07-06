@@ -68,7 +68,7 @@ We collected non-image data from the OAI dataset and created a [subject informat
 - `Age`: age of the subject
 - `BMI`: Body Mass Index of the subject
 
-For more details on the construction of the table, please refer to the [page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/prepareNonImageData.md).
+For more details on the construction of the table, please refer to [this page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/prepareNonImageData.md).
 
 
 
@@ -300,7 +300,7 @@ Three human raters graded the full-thickness cartilage loss (FCL)  into 11 categ
 
 Semiquantitative measurements of the cartilage thickness, surface area, volume, and FCL were retrieved from the Pivotal Osteoarthritis Initiative Magnetic Resonance Imaging Analyses (POMA) dataset –  the “kmri_poma_tkr_chondrometrics” non-image dataset at https://nda.nih.gov/oai/
 
-For details on how to find matching cases and compile [dataset 5](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset5.xlsx), please go to the [page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/prepareData_FCL_validation.md).
+For details on how to find matching cases and compile [dataset 5](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset5.xlsx), please go to [this page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/prepareData_FCL_validation.md).
 
 **Related Data:**
 
