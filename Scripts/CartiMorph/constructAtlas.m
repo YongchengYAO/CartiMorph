@@ -51,10 +51,10 @@ clc;
 %        - 3: Tibia
 %        - 4: Medial Tibial Cartilage (mTC)
 %        - 5: Lateral Tibial Cartilage (lTC)
-% file_segmentation = 'path/to/template/segmentation/CLAIR-Knee-103R_segmentation_64x128x128.nii.gz';
-% 
-% % output: atlas
-% file_atlas = 'path/to/atlas/CLAIR-Knee-103R_atlas_64x128x128.nii.gz';
+file_segmentation = 'path/to/template/segmentation/CLAIR-Knee-103R_segmentation_64x128x128.nii.gz';
+
+% output: atlas
+file_atlas = 'path/to/atlas/CLAIR-Knee-103R_atlas_64x128x128.nii.gz';
 % =============================================================
 
 
