@@ -114,7 +114,7 @@ absDirection_sigV123 = [direction_sigV1, direction_sigV2, direction_sigV3];
 transMat_scB_MTC(:, direction_sigV1) = sigV1;
 transMat_scB_MTC(:, direction_sigV2) = sigV2;
 transMat_scB_MTC(:, direction_sigV3) = sigV3;
-transMat_scB_MTC(:,diag(transMat_scB_MTC)<0) = transMat_scB_MTC(:,diag(transMat_scB_MTC)<0) * -1;
+transMat_scB_MTC(:, diag(transMat_scB_MTC)<0) = transMat_scB_MTC(:, diag(transMat_scB_MTC)<0) * -1;
 vers_scB_MTC_ct = transpose(transMat_scB_MTC \ vers_scB_MTC_c');
 
 % initial parcellation of cMTL

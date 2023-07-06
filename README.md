@@ -55,7 +55,7 @@ Data split in our study:
 
 
 
-### 2.2 Non-image Data
+### 2.2 Non-Image Data
 
 We collected non-image data from the OAI dataset and created a [subject information table](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/OAIZIB_subject_info.xlsx) which contains the following fields:
 
@@ -98,7 +98,7 @@ To reproduce and validate our work, follow the steps to prepare data.
 
 
 
-### 2.3 CartiMorph Data Request
+### 2.4 CartiMorph Data Request
 
 If you want to download the modified segmentation masks in `.nii.gz`, please follow the steps:
 
@@ -108,7 +108,7 @@ If you want to download the modified segmentation masks in `.nii.gz`, please fol
 
    - Email title: [CartiMorph Data Request] + [your institution]
 
-   - you should include your login email for ZIB-Pubdata in the request
+   - you should include your login email for  ZIB-Pubdata in the request
 
      
 
@@ -140,7 +140,14 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
    1. Warp manual segmentation labels of training images to the template image space with our script ([`predicting_getTempSeg.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/predicting_getTempSeg.sh))
    2. Construct template segmentation with our script ([`constructTempSeg.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/constructTempSeg.m))
 
-   
+
+**Related Data:**
+
+We have constructed a knee template image (“**CLARI-Knee-103R**”) learned from MR scans of subjects without radiographic OA. We also constructed the respective 5-class tissue segmentation and a 20-region cartilage atlas for the template image.  
+
+For more information on the template and atlas, please go to the [Template & Atlas page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/TemplateAtlas.md).
+
+
 
 ### 3.3 Cartilage & Bone Segmentation
 
@@ -150,7 +157,7 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
 
 2. Image preprocessing
 
-   1. Put your training data ([dataset 2](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset2.xlsx)) in the `imagesTr` and `labelsTr` folder 
+   1. Put your training data ([dataset 2](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset2.xlsx)) in the `imagesTr` and `labelsTr` folder
 
       ```python
       # arrange our training data like this:
@@ -192,9 +199,11 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
 
 **Model Evaluation:**
 
-The model performance was evaluated by the Dice Similarity Coefficient (DSC) between the model prediction and manual segmentation. Use our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.py)) to calculate the DSC for each subject and segmentation label.
+The model performance was evaluated by the Dice Similarity Coefficient (DSC) between the model prediction and manual segmentation. Use our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.py)) to calculate the DSC for each segmentation label and subject. Use [dataset 3](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset3.xlsx) for model evaluation.
 
-### 3.4 Template-to-image Registration
+
+
+### 3.4 Template-to-Image Registration
 
 #### 3.4.1 Option 1: use the template learning model
 
@@ -206,13 +215,13 @@ The template learning model is trained with the MR images of healthy subjects. T
 
 **Model Evaluation:**
 
-We want to measure the model efficiency in template-to-image registration where the moving image is the template. The model performance was evaluated by the DSC between the warped template segmentation and manual segmentation of the target image. Similarly, use our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.py)) to calculate the DSC for each subject and segmentation label.
+We want to measure the model efficiency in template-to-image registration where the moving image is the template. The model performance was evaluated by the DSC between the warped template segmentation and the manual segmentation of the target image. Similarly, use our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.py)) to calculate the DSC for each segmentation label and subject. Use [dataset 3](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset3.xlsx) for model evaluation.
 
 
 
 #### 3.4.2 Option 2: train an image-to-image registration model with a diverse dataset
 
-This is the method described in our paper.
+(This is the method described in our paper)
 
 **Model Training:**
 
@@ -238,14 +247,15 @@ This is the method described in our paper.
 
 **Model Evaluation:**
 
-Although we have trained a model for image-to-image registration, we want to evaluate the model performance in template-to-image registration. In the model evaluation stage, we treated the learned template image as the moving image. The model performance was evaluated by the DSC between the warped template segmentation and manual segmentation of the target image. Similarly, use our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.py)) to calculate the DSC for each subject and segmentation label.
-
+Although we have trained a model for image-to-image registration, we want to evaluate the model performance in template-to-image registration. In the model evaluation stage, we treated the learned template image as the moving image. The model performance was evaluated by the DSC between the warped template segmentation and manual segmentation of the target image. Similarly, use our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.py)) to calculate the DSC for each segmentation label and subject. Use [dataset 3](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset3.xlsx) for model evaluation.
 
 
 
 ### 3.5 Cartilage Morphometrics
 
-We adopt the mathematical notations as those used in the paper.
+We adopt the mathematical notations as those used in the paper. Each algorithm is followed by the corresponding mathematical notation and script. Note that we provide the code of core algorithms to improve the transparency of our work. The actual image processing pipeline is a bit more complicated since we have to manage the input/output (IO) between algorithms and adapt necessary postprocessing for some algorithms to improve the robustness.
+
+We open-source the code with the hope of advancing medical image analysis techniques for OA monitoring and treatment evaluation. If you want to adopt the proposed **CartiMorph** framework in your research project, please use the [**CartiMorph Toolbox**](https://github.com/YongchengYAO/CartiMorph-Toolbox). 
 
 - **Boundary Extractor**:     $\mathcal{O}_b(\cdot)$     [`CM_cal_getBoundary2D.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_getBoundary2D.m)
 - **Surface Closing:**     $\mathcal{O}_c(\cdot | \cdot)$     [`CM_cal_surfaceClosing.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_surfaceClosing.m)
@@ -267,7 +277,22 @@ We adopt the mathematical notations as those used in the paper.
 
 
 
-## 4. Experiment: Validation of FCL Estimation
+## 4. Experiment: Rule-based & Atlas-based Parcellation
+
+In our study, we compared the rule-based and atlas-based cartilage parcellation methods by quantitative evaluation and visual inspection. 
+
+- **Quantitative Evaluation**: We evaluated the volume overlap between the parcellation outputs of the compared methods by DSC. Results show that the discrepancy between the compared methods increased as the cartilage defects increased (from KL0 to KL4).
+- **Visual Inspection**: The cartilage parcellation from the rule-based method is consistent with the subregion definition despite the severity of cartilage lesions.
+
+
+
+## 5. Experiment: Effectiveness of Segmentation Network
+
+
+
+
+
+## 6. Experiment: Validation of FCL Estimation
 
 Three human raters graded the full-thickness cartilage loss (FCL)  into 11 categories independently. 
 
@@ -277,8 +302,7 @@ Three human raters graded the full-thickness cartilage loss (FCL)  into 11 categ
 
 Semiquantitative measurements of the cartilage thickness, surface area, volume, and FCL were retrieved from the Pivotal Osteoarthritis Initiative Magnetic Resonance Imaging Analyses (POMA) dataset –  the “kmri_poma_tkr_chondrometrics” non-image dataset at https://nda.nih.gov/oai/
 
-For details on how to find matching cases and compile [dataset 4](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset4.xlsx), please go to the [page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/prepareData_FCL_validation.md).
-
+For details on how to find matching cases and compile [dataset 5](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset5.xlsx), please go to the [page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/prepareData_FCL_validation.md).
 
 **Related Data:**
 
@@ -294,7 +318,13 @@ For details on how to find matching cases and compile [dataset 4](https://github
 
   
 
-## 5. Application
+## 7. FAQ
+
+For some frequently asked questions, please go to the [FAQ page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/FAQ.md).
+
+
+
+## 8. Application
 
 [CartiMorph Toolbox](https://github.com/YongchengYAO/CartiMorph-Toolbox): a platform for knee osteoarthritis monitoring and treatments evaluation
 

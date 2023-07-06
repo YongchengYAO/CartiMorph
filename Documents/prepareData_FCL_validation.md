@@ -1,6 +1,6 @@
 # Data for FCL Validation
 
-The page will guide you through the steps to find matching cases that form [dataset 4](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset4.xlsx) and retrieve metrics calculated from Chondrometrics in the POMA study.
+The page will guide you through the steps to find matching cases that form [dataset 5](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset5.xlsx) and retrieve metrics calculated from Chondrometrics in the POMA study.
 
 1. Download the `OAICompleteData_SAS` from the [OAI dataset](https://nda.nih.gov/oai/)
 
