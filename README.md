@@ -16,18 +16,18 @@ This document provides the code and experimental results of our paper. We develo
 
 ![paper-CartiMorph-bw](README.assets/paper-CartiMorph-bw.png)
 
-| Notation                                     | Meaning                                                     |
-| -------------------------------------------- | ----------------------------------------------------------- |
-| $I_i$                                        | MR image                                                    |
-| $S_i$                                        | Segmentation mask                                           |
-| $S_i^l$                                      | Manual segmentation label                                   |
-| $I^t$                                        | Template image                                              |
-| $S^t$                                        | Template segmentation mask                                  |
-| $\mathcal{F}_{\theta_s}$                     | Segmentation model                                          |
-| $\mathcal{G}_{\theta_t}$                     | Template learning model – essentially a registration model  |
-| $\mathcal{G}_{\theta_u}$                     | Registration model                                          |
-| $\mathcal{M}_{down, \theta_i}(\cdot, \cdot)$ | Dowsample function consisting of cropping and resampling    |
-| $\mathcal{M}_{up}(\cdot, \cdot)$             | Upsample function consisting of resampling and zero-filling |
+| Notation                                     | Meaning                                                    |
+| -------------------------------------------- | ---------------------------------------------------------- |
+| $I_i$                                        | MR image                                                   |
+| $S_i$                                        | Segmentation mask                                          |
+| $S_i^l$                                      | Manual segmentation label                                  |
+| $I^t$                                        | Template image                                             |
+| $S^t$                                        | Template segmentation mask                                 |
+| $\mathcal{F}_{\theta_s}$                     | Segmentation model                                         |
+| $\mathcal{G}_{\theta_t}$                     | Template learning model – essentially a registration model |
+| $\mathcal{G}_{\theta_u}$                     | Registration model                                         |
+| $\mathcal{M}_{down, \theta_i}(\cdot, \cdot)$ | Downsampling function (resampling & cropping)              |
+| $\mathcal{M}_{up}(\cdot, \cdot)$             | Upsampling function (zero-filling & resampling)            |
 
 
 
@@ -128,7 +128,7 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
 
 1. Setup a Conda environment using our script ([`envSetup_CartiMorph-vxm.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-vxm.sh)) – it will create a virtual environment `CartiMorphToolbox-Vxm` and install [CartiMorph-vxm](https://github.com/YongchengYAO/CartiMorph-vxm)
 
-2. Prepare training data ([dataset 1](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset1.xlsx)) using our script ([`prepareData4Reg.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/prepareData4Reg.m))
+2. Prepare training data ([dataset 1](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset1.xlsx)) using our script ([`M_down.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/M_down.m))
 
 3. Train a model to learn a representative template image
 
@@ -143,7 +143,7 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
 
 **Related Data:**
 
-We constructed a knee template image (“**CLARI-Knee-103R**”) from MR scans of subjects without radiographic OA. We also constructed the respective 5-class tissue segmentation and a 20-region cartilage atlas for the template image. For more information on the template and atlas, please go to the [Template & Atlas page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/TemplateAtlas.md).
+A knee template image (“**CLARI-Knee-103R**”) was learned from 103 MR scans of subjects without radiographic OA. We also constructed the respective 5-class tissue segmentation and a 20-region cartilage atlas for the template image. For more information on the template and atlas, please go to the [Template & Atlas page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/TemplateAtlas.md).
 
 
 
@@ -225,7 +225,7 @@ We want to measure the model efficiency in template-to-image registration where 
 
 1. Setup a Conda environment using our script ([`envSetup_CartiMorph-vxm.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-vxm.sh)) – it will create a virtual environment `CartiMorphToolbox-Vxm` and install [CartiMorph-vxm](https://github.com/YongchengYAO/CartiMorph-vxm)
 
-2. Prepare training data ([dataset 2](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset1.xlsx)) using our script ([`prepareData4Reg.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/prepareData4Reg.m))
+2. Prepare training data ([dataset 2](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset1.xlsx)) using our script ([`M_down.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/M_down.m))
 
 3. Model training with our script:
    - Model-MSE: [`training_img2img_MSE.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/regModel/training_img2img_MSE.sh)
@@ -249,7 +249,7 @@ Although we have trained a model for image-to-image registration, we want to eva
 
 
 
-### 3.5 Cartilage Morphometrics
+### 3.5 Cartilage Morphometrics & Regional Analysis
 
 We adopt the mathematical notations as those used in the paper. Each algorithm is followed by the corresponding mathematical notation and script. Note that we provide the code of core algorithms to improve the transparency of our work. The actual image processing pipeline is a bit more complicated since we have to manage the input/output (IO) between algorithms and adapt necessary postprocessing for some algorithms to improve the robustness.
 
@@ -263,12 +263,18 @@ We open-source the code with the hope of advancing medical image analysis techni
 - **Surface Normal Estimation**:     $\mathcal{O}_{svd}(\mathcal{S}(P))$     [`CM_cal_estimateSN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_estimateSN.m)
 - **Surface Normal Orientation Correction**:     $\mathcal{O}_{oc}(\cdot)$     [`CM_cal_reorientSN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_reorientSN.m)    
 - **Surface Normal Spatial Smoothing**:     $\mathcal{O}_{ss}(\cdot)$     [`CM_cal_smoothSN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_smoothSN.m)
-- **Thickness Mapping**:     $\mathcal{O}_{th}(\cdot)$     [`CM_cal_thicknessMap_SN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_thicknessMap_SN.m)  
+- **Thickness Measurement**:     $\mathcal{O}_{th}(\cdot)$     [`CM_cal_thicknessMap_SN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_thicknessMap_SN.m)  
 - **Surface Hole Filling:**     $\mathcal{O}_{sf}(\cdot , \cdot)$    
   - **Connectivity-based Surface Hole Filling:**     $\mathcal{O}_{conn}(\cdot , \cdot)$      [`CM_cal_reconCartDefect_conn.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_reconCartDefect_conn.m)
   - **Curve-fitting-based Surface Hole Filling:**     $\mathcal{O}_{curve}(\cdot , \cdot)$ 
     - Femoral Cartilage: [`CM_cal_reconCartDefect_curve_FC.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_reconCartDefect_curve_FC.m)
     - Tibial Cartilage:  [`CM_cal_reconCartDefect_curve_TC.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_reconCartDefect_curve_TC.m)
+- **Downsampling function (resampling & cropping)**:      $\mathcal{M}_{down, \theta_i}(\cdot, \cdot)$      [`M_down.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/M_down.m)
+- **Upsampling function (zero-filling & resampling)**:      $\mathcal{M}_{up}(\cdot, \cdot)$      [`M_up.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/M_up.m)
+
+**Other Algorithms:**
+
+- **Surface Reconstruction**: [`CM_cal_mask2mesh.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_mask2mesh.m)
 - **Rule-based Cartilage Parcellation**:
   - Femoral Cartilage: [`CM_cal_SurfaceParcellation_FC.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_SurfaceParcellation_FC.m)
   - Tibial Cartilage:  [`CM_cal_SurfaceParcellation_TC.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_SurfaceParcellation_TC.m)
@@ -277,10 +283,14 @@ We open-source the code with the hope of advancing medical image analysis techni
 
 ## 4. Experiment: Rule-based & Atlas-based Parcellation
 
-In our study, we compared the rule-based and atlas-based cartilage parcellation methods by quantitative evaluation and visual inspection. 
+In our study, we compared the rule-based and atlas-based cartilage parcellation methods by quantitative evaluation and visual inspection. Note that we took the segmentation labels $S^l_i$ as inputs to avoid errors arising from the segmentation model. We used [dataset 4](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset4.xlsx) for this experiment.
 
 - **Quantitative Evaluation**: We evaluated the DSC between the parcellation outputs of the compared methods with our script ([`cal_DSC.py`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/utility/cal_DSC.py)). Results show that the discrepancy between the compared methods increased as the cartilage defects increased (from KL0 to KL4).
 - **Visual Inspection**: The cartilage parcellation from the rule-based method is consistent with the subregion definition despite the severity of cartilage lesions.
+
+**Algorithms:**
+
+- Nearest-neighbor mapping function: [`CM_cal_nnMapping.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_nnMapping.m)
 
 
 

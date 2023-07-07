@@ -25,12 +25,6 @@ labels = [1,2,3,4,5];
 % =============================================================
 
 
-% Gaussian smoothing parameter
-maskSmoothing_gamma = 2;
-ROISmoothing_gamma = 2;
-threshold = 0.5;
-
-
 % =============================================================
 % Resample template image (subject to RAS+ orientation)
 % =============================================================

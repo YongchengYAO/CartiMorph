@@ -1,4 +1,4 @@
-function cropRangeInfo = CM_imgPreprocess_mdcn(dir_seg_in, dir_img_in, dir_seg_out, dir_img_out,...
+function imgPreInfo = CM_imgPreprocess_mdcn(dir_seg_in, dir_img_in, dir_seg_out, dir_img_out,...
     imgSize_out, kneeSizeInfo, padding)
 % -----------------------------------------------
 % m: mask
@@ -213,9 +213,9 @@ for i=1:numCase
 end
 
 % gather all info
-cropRangeInfo.filename = fileNames;
-cropRangeInfo.cropRange = cropRange;
-cropRangeInfo.imageSize_original = imageSize_original;
-cropRangeInfo.imageSize_downsampled = imageSize_downsampled;
-cropRangeInfo.downFactor = downFactor;
+imgPreInfo.filename = fileNames;
+imgPreInfo.cropRange = cropRange;
+imgPreInfo.imageSize_original = imageSize_original;
+imgPreInfo.imageSize_downsampled = imageSize_downsampled;
+imgPreInfo.downFactor = downFactor;
 end
