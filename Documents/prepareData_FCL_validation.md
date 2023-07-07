@@ -34,7 +34,7 @@ Data can be found [here](https://github.com/YongchengYAO/CartiMorph/blob/main/Ex
 
 
 
-[Back to the main document](https://github.com/YongchengYAO/CartiMorph/tree/main)
+[<<< Back to the main document](https://github.com/YongchengYAO/CartiMorph/tree/main)
 
 
 

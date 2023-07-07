@@ -30,3 +30,6 @@ We learned a low-resolution (64x128x128) template image in our study. We propose
 - [`CLAIR-Knee-103R_segmentation_64x128x128.nii.gz`](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/CLAIR-Knee-103R/CLAIR-Knee-103R_segmentation_64x128x128.nii.gz): the 5-region template segmentation mask
 - [`CLAIR-Knee-103R_atlas_64x128x128.nii.gz`](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/CLAIR-Knee-103R/CLAIR-Knee-103R_atlas_64x128x128.nii.gz): the 20-region cartilage atlas
 
+
+
+[<<< Back to the main document](https://github.com/YongchengYAO/CartiMorph/tree/main)
