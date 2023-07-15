@@ -47,5 +47,5 @@ fi
 # - it does not affect model performance and algorithm accuracy
 # - you may set it to the voxel size of the first image 
 
-# modify the "--imgVoxelSize 1.0295     0.39976     0.39976" below
-CUDA_VISIBLE_DEVICES=$gpuIDs "$dir_scripts"/train_tempLearnModel.py --enc 16  32  32  32 --dec 32  32  32  32  32  16  16 --image-loss "$imgLoss" --imgVoxelSize 1.0295     0.39976     0.39976 --img-list "$img_list" --img-prefix "$img_prefix" --img-suffix "$img_suffix" --model-dir "$dir_model" --batch-size "$batch_size" --epochs "$epochs" --steps-per-epoch "$steps_per_epoch"  2>&1 > "$log_file"
+# modify the "--imgVoxelSize 1.0295 0.39976 0.39976" below
+CUDA_VISIBLE_DEVICES=$gpuIDs "$dir_scripts"/train_tempLearnModel.py --imgVoxelSize 1.0295 0.39976 0.39976 --enc 16  32  32  32 --dec 32  32  32  32  32  16  16 --image-loss "$imgLoss" --img-list "$img_list" --img-prefix "$img_prefix" --img-suffix "$img_suffix" --model-dir "$dir_model" --batch-size "$batch_size" --epochs "$epochs" --steps-per-epoch "$steps_per_epoch"  2>&1 > "$log_file"

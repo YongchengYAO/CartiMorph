@@ -46,5 +46,11 @@ export lastTemplate='path/to/the/last/template/template_epoch000100.nii.gz'
 # - it does not affect model performance and algorithm accuracy
 # - you may set it to the voxel size of the first image 
 
-# modify the "--imgVoxelSize 1.0295     0.39976     0.39976" below
-CUDA_VISIBLE_DEVICES=$gpuIDs "$dir_scripts"/train_tempLearnModel.py --enc 16  32  32  32 --dec 32  32  32  32  32  16  16 --image-loss "$imgLoss" --imgVoxelSize 1.0295     0.39976     0.39976 --img-list "$img_list" --img-prefix "$img_prefix" --img-suffix "$img_suffix" --init-template "$lastTemplate" --model-dir "$dir_model" --batch-size "$batch_size"  --epochs "$epochs" --steps-per-epoch "$steps_per_epoch" --load-weights "$lastModel" --initial-epoch "$lastEpoch" 2>&1 > "$log_file"
+# [option 1]
+# modify the "--imgVoxelSize 1.0295 0.39976 0.39976" below
+CUDA_VISIBLE_DEVICES=$gpuIDs "$dir_scripts"/train_tempLearnModel.py --imgVoxelSize 1.0295 0.39976 0.39976 --enc 16  32  32  32 --dec 32  32  32  32  32  16  16 --image-loss "$imgLoss" --img-list "$img_list" --img-prefix "$img_prefix" --img-suffix "$img_suffix" --init-template "$lastTemplate" --model-dir "$dir_model" --batch-size "$batch_size"  --epochs "$epochs" --steps-per-epoch "$steps_per_epoch" --load-weights "$lastModel" --initial-epoch "$lastEpoch" 2>&1 > "$log_file"
+
+# [option 2]
+# use this command instead if you want to freeze the learned template and only train the registration module/subnetwork
+# (we add the argument "--freezeTemp")
+# CUDA_VISIBLE_DEVICES=$gpuIDs "$dir_scripts"/train_tempLearnModel.py --imgVoxelSize 1.0295 0.39976 0.39976 --freezeTemp --enc 16  32  32  32 --dec 32  32  32  32  32  16  16 --image-loss "$imgLoss" --img-list "$img_list" --img-prefix "$img_prefix" --img-suffix "$img_suffix" --init-template "$lastTemplate" --model-dir "$dir_model" --batch-size "$batch_size"  --epochs "$epochs" --steps-per-epoch "$steps_per_epoch" --load-weights "$lastModel" --initial-epoch "$lastEpoch" 2>&1 > "$log_file"
