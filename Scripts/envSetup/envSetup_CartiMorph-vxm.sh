@@ -24,4 +24,4 @@ python -m pip install neurite==0.2
 python -m pip install packaging==21.3
 python -m pip install nibabel==3.2.2
 python -m pip install numpy==1.23.2
-python -m pip install CartiMorph-vxm==0.5
+python -m pip install CartiMorph-vxm
