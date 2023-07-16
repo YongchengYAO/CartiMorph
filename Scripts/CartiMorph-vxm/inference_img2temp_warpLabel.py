@@ -33,7 +33,7 @@ the License.
 import os
 import argparse
 import numpy as np
-import voxelmorph as vxm
+import CartiMorph_vxm as vxm
 import tensorflow as tf
 
 # parse commandline args

@@ -78,7 +78,7 @@ parser.add_argument('--load-weights', help='optional weights file to initialize 
 parser.add_argument('--initial-epoch', type=int, default=0,
                     help='initial epoch number (default: 0)')
 parser.add_argument('--lr', type=float, default=1e-4, help='learning rate (default: 1e-4)')
-parset.add_argument('--model_saving_step', type=int, default=50, help='model saving step')
+parser.add_argument('--model_saving_step', type=int, default=50, help='model saving step')
 
 # network architecture parameters
 parser.add_argument('--enc', type=int, nargs='+',
