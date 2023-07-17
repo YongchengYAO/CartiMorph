@@ -25,6 +25,7 @@ conda install python=3.10 -y
 python -m pip install tensorflow==2.12
 
 # CartiMorph-vxm
+python -m pip install protobuf==3.20.0 
 python -m pip install chardet==5.1.0
 python -m pip install simpleitk==2.1.1.2
 python -m pip install keras==2.9.0
