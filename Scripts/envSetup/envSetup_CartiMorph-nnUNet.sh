@@ -10,11 +10,11 @@ conda create -n CartiMorphToolbox-nnUNet -y
 eval "$(conda shell.bash hook)"
 conda activate CartiMorphToolbox-nnUNet
 
-# python
+# Python
 conda install python=3.10 -y
 
 # PyTorch
 conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia -y
 
-# nnUNet
+# CartiMorph-nnUnet
 python -m pip install CartiMorph-nnUnet
