@@ -36,4 +36,4 @@ export gpuIDs='0'
 export log_file='path/to/log/file/predicting_warpTempSeg.log' 
 
 
-"$dir_scripts"/inference_temp2img_warpTempSeg.py --dir_targetImg "$dir_targetImg" --file_TempSeg "$file_TempSeg" --dir_warpedTempSeg "$dir_warpedTempSeg" --dir_warpingField "$dir_warpingField" --file_model "$file_model" --gpuIDs "$gpuIDs" 2>&1 > "$log_file"
+"$dir_scripts"/inference_temp2img_warpTempSeg.py --dir_targetImg "$dir_targetImg" --file_TempSeg "$file_TempSeg" --dir_warpedTempSeg "$dir_warpedTempSeg" --dir_warpingField "$dir_warpingField" --file_model "$file_model" --gpuIDs "$gpuIDs" >> "$log_file" 2>&1

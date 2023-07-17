@@ -22,7 +22,12 @@ export img_prefix='path/to/image/folder/end/with/slash/'
 export img_suffix='' 
 
 # [Training] - continue training
+# ----------------------------------
+# Loss function: "mse" or "ncc"
+# 	- mse: MSE loss is recommended for template learning (training option 1)
+#	- ncc: LNCC loss is recommended for training with frozen template image (training option 2)
 export imgLoss=mse 
+# ----------------------------------
 export gpuIDs=0
 export batch_size=1
 # total training epoch
@@ -46,11 +51,11 @@ export lastTemplate='path/to/the/last/template/template_epoch000100.nii.gz'
 # - it does not affect model performance and algorithm accuracy
 # - you may set it to the voxel size of the first image 
 
-# [option 1]
+# [training option 1]
 # modify the "--imgVoxelSize 1.0295 0.39976 0.39976" below
-CUDA_VISIBLE_DEVICES=$gpuIDs "$dir_scripts"/train_tempLearnModel.py --imgVoxelSize 1.0295 0.39976 0.39976 --enc 16  32  32  32 --dec 32  32  32  32  32  16  16 --image-loss "$imgLoss" --img-list "$img_list" --img-prefix "$img_prefix" --img-suffix "$img_suffix" --init-template "$lastTemplate" --model-dir "$dir_model" --batch-size "$batch_size"  --epochs "$epochs" --steps-per-epoch "$steps_per_epoch" --load-weights "$lastModel" --initial-epoch "$lastEpoch" 2>&1 > "$log_file"
+CUDA_VISIBLE_DEVICES=$gpuIDs "$dir_scripts"/train_tempLearnModel.py --imgVoxelSize 1.0295 0.39976 0.39976 --enc 16  32  32  32 --dec 32  32  32  32  32  16  16 --image-loss "$imgLoss" --img-list "$img_list" --img-prefix "$img_prefix" --img-suffix "$img_suffix" --init-template "$lastTemplate" --model-dir "$dir_model" --batch-size "$batch_size"  --epochs "$epochs" --steps-per-epoch "$steps_per_epoch" --load-weights "$lastModel" --initial-epoch "$lastEpoch" >> "$log_file" 2>&1
 
-# [option 2]
+# [training option 2]
 # use this command instead if you want to freeze the learned template and only train the registration module/subnetwork
 # (we add the argument "--freezeTemp")
-# CUDA_VISIBLE_DEVICES=$gpuIDs "$dir_scripts"/train_tempLearnModel.py --imgVoxelSize 1.0295 0.39976 0.39976 --freezeTemp --enc 16  32  32  32 --dec 32  32  32  32  32  16  16 --image-loss "$imgLoss" --img-list "$img_list" --img-prefix "$img_prefix" --img-suffix "$img_suffix" --init-template "$lastTemplate" --model-dir "$dir_model" --batch-size "$batch_size"  --epochs "$epochs" --steps-per-epoch "$steps_per_epoch" --load-weights "$lastModel" --initial-epoch "$lastEpoch" 2>&1 > "$log_file"
+# CUDA_VISIBLE_DEVICES=$gpuIDs "$dir_scripts"/train_tempLearnModel.py --imgVoxelSize 1.0295 0.39976 0.39976 --freezeTemp --enc 16  32  32  32 --dec 32  32  32  32  32  16  16 --image-loss "$imgLoss" --img-list "$img_list" --img-prefix "$img_prefix" --img-suffix "$img_suffix" --init-template "$lastTemplate" --model-dir "$dir_model" --batch-size "$batch_size"  --epochs "$epochs" --steps-per-epoch "$steps_per_epoch" --load-weights "$lastModel" --initial-epoch "$lastEpoch" >> "$log_file" 2>&1
