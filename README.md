@@ -143,7 +143,7 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
 
 **Related Data:**
 
-A knee template image (“**CLARI-Knee-103R**”) was learned from 103 MR scans of subjects without radiographic OA. We also constructed the respective 5-class tissue segmentation and a 20-region cartilage atlas for the template image. For more information on the template and atlas, please go to the [Template & Atlas page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/TemplateAtlas.md).
+A knee template image (“**CLAIR-Knee-103R**”) was learned from 103 MR scans of subjects without radiographic OA. We also constructed the respective 5-class tissue segmentation and a 20-region cartilage atlas for the template image. For more information on the template and atlas, please go to the [Template & Atlas page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/TemplateAtlas.md).
 
 
 
