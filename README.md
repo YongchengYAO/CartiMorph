@@ -8,7 +8,7 @@ This document provides the code and experimental results of our paper. We develo
 
 ## 1. Publication
 
-Yongcheng Yao, Junru Zhong, Liping Zhang, Sheheryar Khan, Weitian Chen. “CartiMorph: a framework for automated knee articular cartilage morphometrics.” Medical Image Analysis (accepted)
+Yongcheng Yao, Junru Zhong, Liping Zhang, Sheheryar Khan, Weitian Chen. “CartiMorph: a framework for automated knee articular cartilage morphometrics.” Medical Image Analysis (accepted) [[arxiv](https://arxiv.org/abs/2308.01981)]
 
 - a method for automated cartilage thickness mapping that is robust to cartilage lesions
 - a method for automated full-thickness cartilage loss (FCL) estimation
