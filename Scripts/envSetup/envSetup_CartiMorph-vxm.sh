@@ -3,6 +3,9 @@
 Dir_current="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 Dir_parent="${Dir_current%/*}"
 
+# remove old Conda environment: CartiMorphToolbox-Vxm 
+conda remove --name CartiMorphToolbox-Vxm --all -y 
+
 # create Conda environment
 conda create -n CartiMorphToolbox-Vxm -y
 
