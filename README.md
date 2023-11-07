@@ -4,7 +4,17 @@
 
 This document provides the code and experimental results of our paper. We developed the **CartiMorph** framework in a hybrid programming environment of Python and Matlab. If you are interested in using **CartiMorph** for your research project, don’t hesitate to try our software [**CartiMorph Toolbox**](https://github.com/YongchengYAO/CartiMorph-Toolbox).
 
+---
 
+**Updates & Related Projects:**
+
+- The code in this repository is **no longer updated** except for bugfix.
+- We are updating the model training strategy, image analysis pipeline, and UI/UX design in some related projects, including
+  - [CartiMorph Toolbox](https://github.com/YongchengYAO/CartiMorph-Toolbox): a platform for knee osteoarthritis monitoring and treatment evaluation
+  - [CartiMorph-vxm](https://github.com/YongchengYAO/CartiMorph-vxm#cartimorph-vxm): template learning and image registration
+  - [CartiMorph-nnUNet](https://github.com/YongchengYAO/CartiMorph-nnUNet#cartimorph-nnunet): image segmentation
+
+---
 
 ## 1. Publication
 
@@ -328,11 +338,11 @@ For some frequently asked questions, please go to the [FAQ page](https://github.
 
 ## 7. Application
 
-[CartiMorph Toolbox](https://github.com/YongchengYAO/CartiMorph-Toolbox): a platform for knee osteoarthritis monitoring and treatments evaluation
+[CartiMorph Toolbox](https://github.com/YongchengYAO/CartiMorph-Toolbox): a platform for knee osteoarthritis monitoring and treatment evaluation
 
 
 
-## Acknowledgement
+## Acknowledgment
 
 - We thank the Osteoarthritis Initiative (OAI) for sharing MR images and non-image clinical data –  [Osteoarthritis Initiative (OAI) dataset](https://nda.nih.gov/oai/)
 - We thank the Computational Diagnosis and Therapy Planning Group of Zuse Institute Berlin (ZIB) for sharing the manual segmentation masks –  [OAI-ZIB dataset](https://pubdata.zib.de)
