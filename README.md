@@ -280,8 +280,8 @@ We open-source the code with the hope of advancing medical image analysis techni
 
 - **Boundary Extractor**:     $\mathcal{O}_{\text{boundary}}(\cdot)$     [`CM_cal_getBoundary2D.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_getBoundary2D.m)
 - **Surface Closing:**     $\mathcal{O}_\text{closing}(\cdot | \cdot)$     [`CM_cal_surfaceClosing.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_surfaceClosing.m)
-- **Surface Dilation:**     $\mathcal{O}_{\text{dilation}}^{n_\text{d}}(\cdot | \cdot)$     [`CM_cal_surfaceDilation.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_surfaceDilation.m)
-- **Surface Erosion:**     $\mathcal{O}_{\text{erosion}}^{n_\text{e}}(\cdot | \cdot)$     [`CM_cal_surfaceErosion.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_surfaceErosion.m)
+- **Surface Dilation:**     $\mathcal{O}_{dilation}^{n_d}(\cdot | \cdot)$     [`CM_cal_surfaceDilation.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_surfaceDilation.m)
+- **Surface Erosion:**     $\mathcal{O}_{erosion}^{n_e}(\cdot | \cdot)$     [`CM_cal_surfaceErosion.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_surfaceErosion.m)
 - **Restricted Surface Dilation:**     $\mathcal{O}_\text{r-dilation}(\cdot | {\cdot, \cdot})$     [`CM_cal_surfaceDilation_restricted.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_surfaceDilation_restricted.m)
 - **Surface Normal Estimation**:     $\mathcal{O}_\text{SVD}(\mathcal{S}(P))$     [`CM_cal_estimateSN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_estimateSN.m)
 - **Surface Normal Orientation Correction**:     $\mathcal{O}_\text{reorientation}(\cdot)$     [`CM_cal_reorientSN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_reorientSN.m)    
