@@ -2,7 +2,7 @@
 
 [Python: 3.10] [Matlab: 2022b]
 
-This document provides the code and experimental results of our paper. We developed the **CartiMorph** framework in a hybrid programming environment of Python and Matlab. If you are interested in using **CartiMorph** for your research project, don’t hesitate to try our software [**CartiMorph Toolbox**](https://github.com/YongchengYAO/CartiMorph-Toolbox).
+This document provides the code and experimental results of our paper. We developed the **CartiMorph** framework in a hybrid programming environment of Python and Matlab. If you are interested in using **CartiMorph** for your research project, don’t hesitate to try our software [**CartiMorph Toolbox**](https://github.com/YongchengYAO/CartiMorph-Toolbox) (unavailable until early Feb 2024).
 
 ---
 
@@ -18,7 +18,9 @@ This document provides the code and experimental results of our paper. We develo
 
 ## 1. Publication
 
-CartiMorph: a framework for automated knee articular cartilage morphometrics. [[arxiv](https://arxiv.org/abs/2308.01981)] [[paper](https://www.sciencedirect.com/science/article/pii/S1361841523002955?via%3Dihub)]
+CartiMorph: a framework for automated knee articular cartilage morphometrics. [[arxiv](https://arxiv.org/abs/2308.01981)] [[paper](https://doi.org/10.1016/j.media.2023.103035)]
+
+[https://doi.org/10.1016/j.media.2023.103035](https://doi.org/10.1016/j.media.2023.103035)
 
 ```latex
 @article{yao2023cartimorph,
@@ -37,18 +39,18 @@ CartiMorph: a framework for automated knee articular cartilage morphometrics. [[
 
 ![paper-CartiMorph-bw](README.assets/paper-CartiMorph.png)
 
-| Notation                                     | Meaning                                                    |
-| -------------------------------------------- | ---------------------------------------------------------- |
-| $I_i$                                        | MR image                                                   |
-| $S_i$                                        | Segmentation mask                                          |
-| $S_i^l$                                      | Manual segmentation label                                  |
-| $I^t$                                        | Template image                                             |
-| $S^t$                                        | Template segmentation mask                                 |
-| $\mathcal{F}_{\theta_s}$                     | Segmentation model                                         |
-| $\mathcal{G}_{\theta_t}$                     | Template learning model – essentially a registration model |
-| $\mathcal{G}_{\theta_u}$                     | Registration model                                         |
-| $\mathcal{M}_{down, \theta_i}(\cdot, \cdot)$ | Downsampling function (resampling & cropping)              |
-| $\mathcal{M}_{up}(\cdot, \cdot)$             | Upsampling function (zero-filling & resampling)            |
+| Notation                                             | Meaning                                                    |
+| ---------------------------------------------------- | ---------------------------------------------------------- |
+| $I_i$                                                | MR image                                                   |
+| $S_i$                                                | Segmentation mask                                          |
+| $S_i^l$                                              | Manual segmentation label                                  |
+| $I^t$                                                | Template image                                             |
+| $S^t$                                                | Template segmentation mask                                 |
+| $\mathcal{F}_{\theta_s}$                             | Segmentation model                                         |
+| $\mathcal{G}_{\theta_t}$                             | Template learning model – essentially a registration model |
+| $\mathcal{G}_{\theta_u}$                             | Registration model                                         |
+| $\mathcal{M}^{\text{down}}_{\theta_i}(\cdot, \cdot)$ | Downsampling function (resampling & cropping)              |
+| $\mathcal{M}^{\text{up}}(\cdot, \cdot)$              | Upsampling function (zero-filling & resampling)            |
 
 
 
@@ -276,22 +278,22 @@ We adopt the mathematical notations as those used in the paper. Each algorithm i
 
 We open-source the code with the hope of advancing medical image analysis techniques for OA monitoring and treatment evaluation. If you want to adopt the proposed **CartiMorph** framework in your research project, please use the [**CartiMorph Toolbox**](https://github.com/YongchengYAO/CartiMorph-Toolbox). 
 
-- **Boundary Extractor**:     $\mathcal{O}_b(\cdot)$     [`CM_cal_getBoundary2D.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_getBoundary2D.m)
-- **Surface Closing:**     $\mathcal{O}_c(\cdot | \cdot)$     [`CM_cal_surfaceClosing.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_surfaceClosing.m)
-- **Surface Dilation:**     $\mathcal{O}_d^{n_d}(\cdot | \cdot)$     [`CM_cal_surfaceDilation.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_surfaceDilation.m)
-- **Surface Erosion:**     $\mathcal{O}_e^{n_e}(\cdot)$     [`CM_cal_surfaceErosion.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_surfaceErosion.m)
-- **Restricted Surface Dilation:**     $\mathcal{O}_{rd}(\cdot | {\cdot, \cdot})$     [`CM_cal_surfaceDilation_restricted.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_surfaceDilation_restricted.m)
-- **Surface Normal Estimation**:     $\mathcal{O}_{svd}(\mathcal{S}(P))$     [`CM_cal_estimateSN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_estimateSN.m)
-- **Surface Normal Orientation Correction**:     $\mathcal{O}_{oc}(\cdot)$     [`CM_cal_reorientSN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_reorientSN.m)    
-- **Surface Normal Spatial Smoothing**:     $\mathcal{O}_{ss}(\cdot)$     [`CM_cal_smoothSN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_smoothSN.m)
-- **Thickness Measurement**:     $\mathcal{O}_{th}(\cdot)$     [`CM_cal_thicknessMap_SN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_thicknessMap_SN.m)  
-- **Surface Hole Filling:**     $\mathcal{O}_{sf}(\cdot , \cdot)$    
-  - **Connectivity-based Surface Hole Filling:**     $\mathcal{O}_{conn}(\cdot , \cdot)$      [`CM_cal_reconCartDefect_conn.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_reconCartDefect_conn.m)
-  - **Curve-fitting-based Surface Hole Filling:**     $\mathcal{O}_{curve}(\cdot , \cdot)$ 
+- **Boundary Extractor**:     $\mathcal{O}_{\text{boundary}}(\cdot)$     [`CM_cal_getBoundary2D.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_getBoundary2D.m)
+- **Surface Closing:**     $\mathcal{O}_\text{closing}(\cdot | \cdot)$     [`CM_cal_surfaceClosing.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_surfaceClosing.m)
+- **Surface Dilation:**     $\mathcal{O}_\text{dilation}^{n_\text{d}}(\cdot | \cdot)$     [`CM_cal_surfaceDilation.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_surfaceDilation.m)
+- **Surface Erosion:**     $\mathcal{O}_\text{erosion}^{n_\text{e}}(\cdot | \cdot)$     [`CM_cal_surfaceErosion.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_surfaceErosion.m)
+- **Restricted Surface Dilation:**     $\mathcal{O}_\text{r-dilation}(\cdot | {\cdot, \cdot})$     [`CM_cal_surfaceDilation_restricted.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_surfaceDilation_restricted.m)
+- **Surface Normal Estimation**:     $\mathcal{O}_\text{SVD}(\mathcal{S}(P))$     [`CM_cal_estimateSN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_estimateSN.m)
+- **Surface Normal Orientation Correction**:     $\mathcal{O}_\text{reorientation}(\cdot)$     [`CM_cal_reorientSN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_reorientSN.m)    
+- **Surface Normal Spatial Smoothing**:     $\mathcal{O}_\text{smoothing}(\cdot)$     [`CM_cal_smoothSN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_smoothSN.m)
+- **Thickness Measurement**:     $\mathcal{O}_\text{thickness}(\cdot)$     [`CM_cal_thicknessMap_SN.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_thicknessMap_SN.m)  
+- **Surface Hole Filling:**     $\mathcal{O}_\text{surface-filling}(\cdot , \cdot)$    
+  - **Connectivity-based Surface Hole Filling:**     $\mathcal{O}_\text{conn}(\cdot , \cdot)$      [`CM_cal_reconCartDefect_conn.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_reconCartDefect_conn.m)
+  - **Curve-fitting-based Surface Hole Filling:**     $\mathcal{O}_\text{curve}(\cdot , \cdot)$ 
     - Femoral Cartilage: [`CM_cal_reconCartDefect_curve_FC.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_reconCartDefect_curve_FC.m)
     - Tibial Cartilage:  [`CM_cal_reconCartDefect_curve_TC.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_reconCartDefect_curve_TC.m)
-- **Downsampling function (resampling & cropping)**:      $\mathcal{M}_{down, \theta_i}(\cdot, \cdot)$      [`M_down.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/M_down.m)
-- **Upsampling function (zero-filling & resampling)**:      $\mathcal{M}_{up}(\cdot, \cdot)$      [`M_up.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/M_up.m)
+- **Downsampling function (resampling & cropping)**:      $\mathcal{M}^\text{down}_{\theta_i}(\cdot, \cdot)$      [`M_down.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/M_down.m)
+- **Upsampling function (zero-filling & resampling)**:      $\mathcal{M}^\text{up}(\cdot, \cdot)$      [`M_up.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/M_up.m)
 
 **Other Algorithms:**
 
