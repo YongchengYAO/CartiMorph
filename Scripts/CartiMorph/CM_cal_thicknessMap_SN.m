@@ -42,7 +42,7 @@ p3 = vers_outer(faces_outer(:,3),:);
 ThicknessMap = cat(2, vers_inter, zeros(size(SN, 1), 1));
 
 % [enable parallel computing if available]
-if isempty(gcp("nocreate"))
+if ~license('test', 'Distrib_Computing_Toolbox')
     % (without parallel computing)
     for i=1:size(SN,1)
         i_SN = SN(i, :);
@@ -64,7 +64,7 @@ if isempty(gcp("nocreate"))
             end
         end
     end
-else
+elseif isempty(gcp("nocreate"))
     % (same code with parallel computing)
     parpool;
     parfor i=1:size(SN,1)
@@ -87,7 +87,28 @@ else
             end
         end
     end
-    delete(gcp);
+else
+    % (same code with parallel computing)
+    parfor i=1:size(SN,1)
+        i_SN = SN(i, :);
+        i_ver = vers_inter(i, :);
+        [idx_intersect, ~, ~, ~, xcoor] = TriangleRayIntersection(i_ver, i_SN, p1, p2, p3, 'border', 'inclusive');
+        intersections = unique(xcoor(idx_intersect, :), 'rows');
+        if size(intersections,1)>0
+            if size(intersections,1)==1
+                distance = norm(i_ver - intersections);
+            else
+                % find the nearest intersection in the positive direction
+                [~, idx_dest] = pdist2(intersections, i_ver, 'euclidean', 'Smallest', 1);
+                destination = intersections(idx_dest, :);
+                % calculate the thickness as the distance between i-th voxel and destination
+                distance = norm(i_ver - destination);
+            end
+            if distance < depth
+                ThicknessMap(i, 4) = distance;
+            end
+        end
+    end
 end
 
 end

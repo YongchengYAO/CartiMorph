@@ -39,14 +39,14 @@ neighFaces = cell(numEdges, 1);
 n_neighFaces = zeros(numEdges, 1);
 
 % [enable parallel computing if available]
-if isempty(gcp("nocreate"))
+if ~license('test', 'Distrib_Computing_Toolbox')
     % (without parallel computing)
     for i = 1:numEdges
         idx_neighFaces = idx_clean == i;
         neighFaces{i, 1} = faceIDs(idx_neighFaces);
         n_neighFaces(i, 1) = sum(idx_neighFaces);
     end
-else
+elseif isempty(gcp("nocreate"))
     % (same code with parallel computing)
     parpool;
     parfor i = 1:numEdges
@@ -54,7 +54,13 @@ else
         neighFaces{i, 1} = faceIDs(idx_neighFaces); %#ok<*PFBNS>
         n_neighFaces(i, 1) = sum(idx_neighFaces);
     end
-    delete(gcp);
+else
+    % (same code with parallel computing)
+    parfor i = 1:numEdges
+        idx_neighFaces = idx_clean == i;
+        neighFaces{i, 1} = faceIDs(idx_neighFaces); %#ok<*PFBNS>
+        n_neighFaces(i, 1) = sum(idx_neighFaces);
+    end
 end
 
 end

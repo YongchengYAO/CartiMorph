@@ -45,7 +45,7 @@ SN_scaled = SN_in .* min(size_voxel);
 SN_f1 = zeros(size(SN_in));
 
 % [enable parallel computing if available]
-if isempty(gcp("nocreate"))
+if ~license('test', 'Distrib_Computing_Toolbox')
     % (without parallel computing)
     for i = 1:size(SN_in, 1)
         i_SN = SN_scaled(i, :);
@@ -60,7 +60,7 @@ if isempty(gcp("nocreate"))
             SN_f1(i, :) = i_SN;
         end
     end
-else
+elseif isempty(gcp("nocreate"))
     % (same code with parallel computing)
     parpool;
     parfor i = 1:size(SN_in, 1)
@@ -78,7 +78,23 @@ else
             SN_f1(i, :) = i_SN;
         end
     end
-    delete(gcp);
+else
+    % (same code with parallel computing)
+    parfor i = 1:size(SN_in, 1)
+        i_SN = SN_scaled(i, :);
+        i_ver = vers_inter(i, :);
+        i_endPoint_SN = i_ver + i_SN;
+        i_endPoint_fSN = i_ver - i_SN;
+
+        [i_distance_endPoint_SN, ~] = pdist2(vers_outer, i_endPoint_SN, 'euclidean', 'Smallest', 1);
+        [i_distance_endPoint_fSN, ~] = pdist2(vers_outer, i_endPoint_fSN, 'euclidean', 'Smallest', 1);
+
+        if i_distance_endPoint_SN > i_distance_endPoint_fSN
+            SN_f1(i, :) = -i_SN;
+        else
+            SN_f1(i, :) = i_SN;
+        end
+    end
 end
 % ------------------------------------------------------------------------------------------
 

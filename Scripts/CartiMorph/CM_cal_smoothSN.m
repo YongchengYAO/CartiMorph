@@ -28,7 +28,7 @@ function SN_out = CM_cal_smoothSN(SN_in, vers_inter, n_neigh)
 SN_out = zeros(size(SN_in));
 
 % [enable parallel computing if available]
-if isempty(gcp("nocreate"))
+if ~license('test', 'Distrib_Computing_Toolbox')
     % (without parallel computing)
     for i = 1:size(vers_inter, 1)
         % find the i-th voxel
@@ -40,7 +40,7 @@ if isempty(gcp("nocreate"))
         mean_SN = mean(SN_neigh, 1);
         SN_out(i, :) = mean_SN ./ norm(mean_SN);
     end
-else
+elseif isempty(gcp("nocreate"))
     % (same code with parallel computing)
     parpool;
     parfor i = 1:size(vers_inter, 1)
@@ -53,7 +53,18 @@ else
         mean_SN = mean(SN_neigh, 1);
         SN_out(i, :) = mean_SN ./ norm(mean_SN);
     end
-    delete(gcp);
+else
+    % (same code with parallel computing)
+    parfor i = 1:size(vers_inter, 1)
+        % find the i-th voxel
+        i_coor = vers_inter(i, :);
+        % find neighbors of the i-th voxel and their SN
+        [~, idx_neigh] = pdist2(vers_inter, i_coor, 'euclidean', 'Smallest', n_neigh);
+        SN_neigh = SN_in(idx_neigh, :);
+        % calculate the mean SN as the smoothed SN for this voxel
+        mean_SN = mean(SN_neigh, 1);
+        SN_out(i, :) = mean_SN ./ norm(mean_SN);
+    end
 end
 
 end

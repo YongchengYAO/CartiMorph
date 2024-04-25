@@ -27,7 +27,7 @@ n_voxels = size(vers_voxels, 1); % number of vertices
 SN = zeros(n_voxels, 3); % unit surface normal
 
 % [enable parallel computing if available]
-if isempty(gcp("nocreate"))
+if ~license('test', 'Distrib_Computing_Toolbox')
     % (without parallel computing)
     for i = 1:n_voxels
         % get the coordinates of the i-th voxel
@@ -43,7 +43,7 @@ if isempty(gcp("nocreate"))
         % get unit surface normal
         SN(i, :) = i_SN ./ norm(i_SN);
     end
-else
+elseif isempty(gcp("nocreate"))
     % (same code with parallel computing)
     parpool;
     parfor i = 1:n_voxels
@@ -60,7 +60,22 @@ else
         % get unit surface normal
         SN(i, :) = i_SN ./ norm(i_SN);
     end
-    delete(gcp);
+else
+    % (same code with parallel computing)
+    parfor i = 1:n_voxels
+        % get the coordinates of the i-th voxel
+        i_vox = vers_voxels(i, :);
+        % find the neighbors of the i-th voxel
+        [~, idx_neigh] = pdist2(vers_voxels, i_vox, 'euclidean', 'Smallest', n_neigh);
+        % get the coordinates of neighbors and the i-th voxel
+        i_pool = vers_voxels(idx_neigh, :);
+        % estimate the surface normal
+        i_pool_centered = i_pool - mean(i_pool, 1);
+        [~, ~, V] = svd(i_pool_centered, 0);
+        i_SN = V(:, end);
+        % get unit surface normal
+        SN(i, :) = i_SN ./ norm(i_SN);
+    end
 end
 
 end
