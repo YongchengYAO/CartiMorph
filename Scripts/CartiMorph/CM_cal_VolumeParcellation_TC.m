@@ -397,29 +397,23 @@ vers_iLTC = vers_Clusters_LTC{idx_iLTC};
 % ---------------------------------------------------------
 % combine results
 % ---------------------------------------------------------
+subsSubReg_TC.cMTC = round(vers_cMTC ./ size_voxel);
+subsSubReg_TC.aMTC = round(vers_aMTC ./ size_voxel);
+subsSubReg_TC.pMTC = round(vers_pMTC ./ size_voxel);
+subsSubReg_TC.cLTC = round(vers_cLTC ./ size_voxel);
+subsSubReg_TC.aLTC = round(vers_aLTC ./ size_voxel);
+subsSubReg_TC.pLTC = round(vers_pLTC ./ size_voxel);
 switch kneeSide
     case "right"
-        subsSubReg_TC.cMTC = round(vers_cMTC ./ size_voxel);
-        subsSubReg_TC.aMTC = round(vers_aMTC ./ size_voxel);
-        subsSubReg_TC.pMTC = round(vers_pMTC ./ size_voxel);
         subsSubReg_TC.iMTC = round(vers_iMTC ./ size_voxel);
         subsSubReg_TC.eMTC = round(vers_eMTC ./ size_voxel);
-        subsSubReg_TC.cLTC = round(vers_cLTC ./ size_voxel);
-        subsSubReg_TC.aLTC = round(vers_aLTC ./ size_voxel);
-        subsSubReg_TC.pLTC = round(vers_pLTC ./ size_voxel);
         subsSubReg_TC.iLTC = round(vers_iLTC ./ size_voxel);
         subsSubReg_TC.eLTC = round(vers_eLTC ./ size_voxel);
-    case "left"
-        subsSubReg_TC.cMTC = round(vers_cLTC ./ size_voxel);
-        subsSubReg_TC.aMTC = round(vers_aLTC ./ size_voxel);
-        subsSubReg_TC.pMTC = round(vers_pLTC ./ size_voxel);
-        subsSubReg_TC.iMTC = round(vers_iLTC ./ size_voxel);
-        subsSubReg_TC.eMTC = round(vers_eLTC ./ size_voxel);
-        subsSubReg_TC.cLTC = round(vers_cMTC ./ size_voxel);
-        subsSubReg_TC.aLTC = round(vers_aMTC ./ size_voxel);
-        subsSubReg_TC.pLTC = round(vers_pMTC ./ size_voxel);
-        subsSubReg_TC.iLTC = round(vers_iMTC ./ size_voxel);
-        subsSubReg_TC.eLTC = round(vers_eMTC ./ size_voxel);
+    case "left" % swapping interior and exterior compartments
+        subsSubReg_TC.iMTC = round(vers_eMTC ./ size_voxel);
+        subsSubReg_TC.eMTC = round(vers_iMTC ./ size_voxel);
+        subsSubReg_TC.iLTC = round(vers_eLTC ./ size_voxel);
+        subsSubReg_TC.eLTC = round(vers_iLTC ./ size_voxel);
 end
 % ---------------------------------------------------------
 

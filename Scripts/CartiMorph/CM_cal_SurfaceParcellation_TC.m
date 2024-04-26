@@ -541,104 +541,87 @@ end
 
 
 %% Combine results
+%% Vertices
+% TC with recovered full-thickness cartilage loss
+versSubReg_scB_TC.cMTC = vers_scB_cMTC;
+versSubReg_scB_TC.aMTC = vers_scB_aMTC;
+versSubReg_scB_TC.pMTC = vers_scB_pMTC;
+versSubReg_scB_TC.cLTC = vers_scB_cLTC;
+versSubReg_scB_TC.aLTC = vers_scB_aLTC;
+versSubReg_scB_TC.pLTC = vers_scB_pLTC;
+% original TC
+versSubReg_iC_TC.cMTC = vers_iC_cMTC;
+versSubReg_iC_TC.aMTC = vers_iC_aMTC;
+versSubReg_iC_TC.pMTC = vers_iC_pMTC;
+versSubReg_iC_TC.cLTC = vers_iC_cLTC;
+versSubReg_iC_TC.aLTC = vers_iC_aLTC;
+versSubReg_iC_TC.pLTC = vers_iC_pLTC;
+%% Mesh
+% TC with recovered full-thickness cartilage loss
+meshSubReg_scB_TC.cMTC = Mesh_scB_cMTC;
+meshSubReg_scB_TC.aMTC = Mesh_scB_aMTC;
+meshSubReg_scB_TC.pMTC = Mesh_scB_pMTC;
+meshSubReg_scB_TC.cLTC = Mesh_scB_cLTC;
+meshSubReg_scB_TC.aLTC = Mesh_scB_aLTC;
+meshSubReg_scB_TC.pLTC = Mesh_scB_pLTC;
+% original TC
+meshSubReg_iC_TC.cMTC = Mesh_iC_cMTC;
+meshSubReg_iC_TC.aMTC = Mesh_iC_aMTC;
+meshSubReg_iC_TC.pMTC = Mesh_iC_pMTC;
+meshSubReg_iC_TC.cLTC = Mesh_iC_cLTC;
+meshSubReg_iC_TC.aLTC = Mesh_iC_aLTC;
+meshSubReg_iC_TC.pLTC = Mesh_iC_pLTC;
+
 switch knee_side
     case "right"
         %% Vertices
         % TC with recovered full-thickness cartilage loss
-        versSubReg_scB_TC.cMTC = vers_scB_cMTC;
-        versSubReg_scB_TC.aMTC = vers_scB_aMTC;
-        versSubReg_scB_TC.pMTC = vers_scB_pMTC;
         versSubReg_scB_TC.iMTC = vers_scB_iMTC;
         versSubReg_scB_TC.eMTC = vers_scB_eMTC;
-        versSubReg_scB_TC.cLTC = vers_scB_cLTC;
-        versSubReg_scB_TC.aLTC = vers_scB_aLTC;
-        versSubReg_scB_TC.pLTC = vers_scB_pLTC;
         versSubReg_scB_TC.iLTC = vers_scB_iLTC;
         versSubReg_scB_TC.eLTC = vers_scB_eLTC;
         % original TC
-        versSubReg_iC_TC.cMTC = vers_iC_cMTC;
-        versSubReg_iC_TC.aMTC = vers_iC_aMTC;
-        versSubReg_iC_TC.pMTC = vers_iC_pMTC;
         versSubReg_iC_TC.iMTC = vers_iC_iMTC;
         versSubReg_iC_TC.eMTC = vers_iC_eMTC;
-        versSubReg_iC_TC.cLTC = vers_iC_cLTC;
-        versSubReg_iC_TC.aLTC = vers_iC_aLTC;
-        versSubReg_iC_TC.pLTC = vers_iC_pLTC;
         versSubReg_iC_TC.iLTC = vers_iC_iLTC;
         versSubReg_iC_TC.eLTC = vers_iC_eLTC;
 
         %% Mesh
         % TC with recovered full-thickness cartilage loss
-        meshSubReg_scB_TC.cMTC = Mesh_scB_cMTC;
-        meshSubReg_scB_TC.aMTC = Mesh_scB_aMTC;
-        meshSubReg_scB_TC.pMTC = Mesh_scB_pMTC;
         meshSubReg_scB_TC.iMTC = Mesh_scB_iMTC;
         meshSubReg_scB_TC.eMTC = Mesh_scB_eMTC;
-        meshSubReg_scB_TC.cLTC = Mesh_scB_cLTC;
-        meshSubReg_scB_TC.aLTC = Mesh_scB_aLTC;
-        meshSubReg_scB_TC.pLTC = Mesh_scB_pLTC;
         meshSubReg_scB_TC.iLTC = Mesh_scB_iLTC;
         meshSubReg_scB_TC.eLTC = Mesh_scB_eLTC;
         % original TC
-        meshSubReg_iC_TC.cMTC = Mesh_iC_cMTC;
-        meshSubReg_iC_TC.aMTC = Mesh_iC_aMTC;
-        meshSubReg_iC_TC.pMTC = Mesh_iC_pMTC;
         meshSubReg_iC_TC.iMTC = Mesh_iC_iMTC;
         meshSubReg_iC_TC.eMTC = Mesh_iC_eMTC;
-        meshSubReg_iC_TC.cLTC = Mesh_iC_cLTC;
-        meshSubReg_iC_TC.aLTC = Mesh_iC_aLTC;
-        meshSubReg_iC_TC.pLTC = Mesh_iC_pLTC;
         meshSubReg_iC_TC.iLTC = Mesh_iC_iLTC;
         meshSubReg_iC_TC.eLTC = Mesh_iC_eLTC;
 
-    case "left"
+    case "left" % swapping interior and exterior compartments
         %% Vertices
         % TC with recovered full-thickness cartilage loss
-        versSubReg_scB_TC.cMTC = vers_scB_cLTC;
-        versSubReg_scB_TC.aMTC = vers_scB_aLTC;
-        versSubReg_scB_TC.pMTC = vers_scB_pLTC;
-        versSubReg_scB_TC.iMTC = vers_scB_iLTC;
-        versSubReg_scB_TC.eMTC = vers_scB_eLTC;
-        versSubReg_scB_TC.cLTC = vers_scB_cMTC;
-        versSubReg_scB_TC.aLTC = vers_scB_aMTC;
-        versSubReg_scB_TC.pLTC = vers_scB_pMTC;
-        versSubReg_scB_TC.iLTC = vers_scB_iMTC;
-        versSubReg_scB_TC.eLTC = vers_scB_eMTC;
+        versSubReg_scB_TC.iMTC = vers_scB_eMTC;
+        versSubReg_scB_TC.eMTC = vers_scB_iMTC;
+        versSubReg_scB_TC.iLTC = vers_scB_eLTC;
+        versSubReg_scB_TC.eLTC = vers_scB_iLTC;
         % original TC
-        versSubReg_iC_TC.cMTC = vers_iC_cLTC;
-        versSubReg_iC_TC.aMTC = vers_iC_aLTC;
-        versSubReg_iC_TC.pMTC = vers_iC_pLTC;
-        versSubReg_iC_TC.iMTC = vers_iC_iLTC;
-        versSubReg_iC_TC.eMTC = vers_iC_eLTC;
-        versSubReg_iC_TC.cLTC = vers_iC_cMTC;
-        versSubReg_iC_TC.aLTC = vers_iC_aMTC;
-        versSubReg_iC_TC.pLTC = vers_iC_pMTC;
-        versSubReg_iC_TC.iLTC = vers_iC_iMTC;
-        versSubReg_iC_TC.eLTC = vers_iC_eMTC;
+        versSubReg_iC_TC.iMTC = vers_iC_eMTC;
+        versSubReg_iC_TC.eMTC = vers_iC_iMTC;
+        versSubReg_iC_TC.iLTC = vers_iC_eLTC;
+        versSubReg_iC_TC.eLTC = vers_iC_iLTC;
 
         %% Mesh
         % TC with recovered full-thickness cartilage loss
-        meshSubReg_scB_TC.cMTC = Mesh_scB_cLTC;
-        meshSubReg_scB_TC.aMTC = Mesh_scB_aLTC;
-        meshSubReg_scB_TC.pMTC = Mesh_scB_pLTC;
-        meshSubReg_scB_TC.iMTC = Mesh_scB_iLTC;
-        meshSubReg_scB_TC.eMTC = Mesh_scB_eLTC;
-        meshSubReg_scB_TC.cLTC = Mesh_scB_cMTC;
-        meshSubReg_scB_TC.aLTC = Mesh_scB_aMTC;
-        meshSubReg_scB_TC.pLTC = Mesh_scB_pMTC;
-        meshSubReg_scB_TC.iLTC = Mesh_scB_iMTC;
-        meshSubReg_scB_TC.eLTC = Mesh_scB_eMTC;
+        meshSubReg_scB_TC.iMTC = Mesh_scB_eMTC;
+        meshSubReg_scB_TC.eMTC = Mesh_scB_iMTC;
+        meshSubReg_scB_TC.iLTC = Mesh_scB_eLTC;
+        meshSubReg_scB_TC.eLTC = Mesh_scB_iLTC;
         % original TC
-        meshSubReg_iC_TC.cMTC = Mesh_iC_cLTC;
-        meshSubReg_iC_TC.aMTC = Mesh_iC_aLTC;
-        meshSubReg_iC_TC.pMTC = Mesh_iC_pLTC;
-        meshSubReg_iC_TC.iMTC = Mesh_iC_iLTC;
-        meshSubReg_iC_TC.eMTC = Mesh_iC_eLTC;
-        meshSubReg_iC_TC.cLTC = Mesh_iC_cMTC;
-        meshSubReg_iC_TC.aLTC = Mesh_iC_aMTC;
-        meshSubReg_iC_TC.pLTC = Mesh_iC_pMTC;
-        meshSubReg_iC_TC.iLTC = Mesh_iC_iMTC;
-        meshSubReg_iC_TC.eLTC = Mesh_iC_eMTC;
+        meshSubReg_iC_TC.iMTC = Mesh_iC_eMTC;
+        meshSubReg_iC_TC.eMTC = Mesh_iC_iMTC;
+        meshSubReg_iC_TC.iLTC = Mesh_iC_eLTC;
+        meshSubReg_iC_TC.eLTC = Mesh_iC_iLTC;
 end
 
 end
