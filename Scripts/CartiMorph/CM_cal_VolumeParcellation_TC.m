@@ -413,13 +413,13 @@ switch kneeSide
         subsSubReg_TC.cMTC = round(vers_cLTC ./ size_voxel);
         subsSubReg_TC.aMTC = round(vers_aLTC ./ size_voxel);
         subsSubReg_TC.pMTC = round(vers_pLTC ./ size_voxel);
-        subsSubReg_TC.iMTC = round(vers_eLTC ./ size_voxel);
-        subsSubReg_TC.eMTC = round(vers_iLTC ./ size_voxel);
+        subsSubReg_TC.iMTC = round(vers_iLTC ./ size_voxel);
+        subsSubReg_TC.eMTC = round(vers_eLTC ./ size_voxel);
         subsSubReg_TC.cLTC = round(vers_cMTC ./ size_voxel);
         subsSubReg_TC.aLTC = round(vers_aMTC ./ size_voxel);
         subsSubReg_TC.pLTC = round(vers_pMTC ./ size_voxel);
-        subsSubReg_TC.iLTC = round(vers_eMTC ./ size_voxel);
-        subsSubReg_TC.eLTC = round(vers_iMTC ./ size_voxel);
+        subsSubReg_TC.iLTC = round(vers_iMTC ./ size_voxel);
+        subsSubReg_TC.eLTC = round(vers_eMTC ./ size_voxel);
 end
 % ---------------------------------------------------------
 
