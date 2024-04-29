@@ -27,7 +27,7 @@ function atlas = CM_cal_VolumeParcellation_TC(mask_mTC, mask_lTC, kneeSide, size
 % ------------------------------------------------------------------------------
 % Matlab Version: 2019b or later
 %
-% Last updated on: 23-Jun-2022
+% Last updated on: 27-Apr-2024
 %
 % Author:
 % Yongcheng YAO (yao_yongcheng@link.cuhk.edu.hk)

@@ -25,7 +25,7 @@ function [versSubReg_iC_TC, versSubReg_scB_TC, meshSubReg_iC_TC, meshSubReg_scB_
 % ------------------------------------------------------------------------------
 % Matlab Version: 2019b or later
 %
-% Last updated on: 17-Sep-2022
+% Last updated on: 27-Apr-2024
 %
 % Author:
 % Yongcheng YAO (yao_yongcheng@link.cuhk.edu.hk)
