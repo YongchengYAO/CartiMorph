@@ -123,19 +123,13 @@ To reproduce and validate our work, follow the steps to prepare data.
 
 
 
-### 2.4 CartiMorph Data Request
+### 2.4 Processed Data from CartiMorph
 
-If you want to download the modified segmentation masks in `.nii.gz`, please follow the steps:
+If you use the [processed data](https://drive.google.com/drive/folders/13_afAKSH7ZMOI_Nk2gfoihbJKwafw1l9?usp=sharing), please note that the manual segmentation annotations comes from this work: 
 
-1. Register at [ZIB-Pubdata](https://pubdata.zib.de) for access to the “Manual Segmentations” dataset
+- Automated Segmentation of Knee Bone and Cartilage combining Statistical Shape Knowledge and Convolutional Neural Networks: Data from the Osteoarthritis Initiative (https://doi.org/10.1016/j.media.2018.11.009)
 
-2. Find my email address on the left sidebar of my [personal webpage](https://yongchengyao.github.io), and ask for data sharing via email.
 
-   - Email title: [CartiMorph Data Request] + [your institution]
-
-   - you should include your login email for  ZIB-Pubdata in the request
-
-     
 
 ## 3. Methods
 
