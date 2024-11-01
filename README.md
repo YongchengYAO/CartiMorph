@@ -62,7 +62,7 @@ doi = {https://doi.org/10.1016/j.media.2023.103035}
 
 MR images: [Osteoarthritis Initiative (OAI) dataset](https://nda.nih.gov/oai/)
 
-Cartilage and bone segmentation masks: OAI-ZIB dataset (our preprocessed data [here](https://drive.google.com/drive/folders/13_afAKSH7ZMOI_Nk2gfoihbJKwafw1l9?usp=sharing))
+Cartilage and bone segmentation masks: OAI-ZIB dataset
 
 - 507 segmentations for DESS MRIs from the OAI database
 - segmentation masks for the femur (ROI1), femoral cartilage (ROI2), tibia (ROI3), and tibial cartilage (ROI4)
@@ -123,9 +123,9 @@ To reproduce and validate our work, follow the steps to prepare data.
 
 
 
-### 2.4 :rocket: Preprocessed Data
+### 2.4 :rocket: Preprocessed Data: [**OAIZIB-CM**](https://drive.google.com/drive/folders/13_afAKSH7ZMOI_Nk2gfoihbJKwafw1l9?usp=share_link)
 
-If you use the [preprocessed data](https://drive.google.com/drive/folders/13_afAKSH7ZMOI_Nk2gfoihbJKwafw1l9?usp=sharing), please note that the manual segmentation annotations come from this work: 
+If you use our preprocessed data, please note that the manual segmentation annotations come from this work: 
 
 - Automated Segmentation of Knee Bone and Cartilage combining Statistical Shape Knowledge and Convolutional Neural Networks: Data from the Osteoarthritis Initiative (https://doi.org/10.1016/j.media.2018.11.009)
 
