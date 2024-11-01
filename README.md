@@ -123,7 +123,7 @@ To reproduce and validate our work, follow the steps to prepare data.
 
 
 
-### 2.4 Preprocessed Data
+### 2.4 :rocket: Preprocessed Data
 
 If you use the [preprocessed data](https://drive.google.com/drive/folders/13_afAKSH7ZMOI_Nk2gfoihbJKwafw1l9?usp=sharing), please note that the manual segmentation annotations come from this work: 
 
@@ -159,8 +159,7 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
    1. Warp manual segmentation labels of training images to the template image space with our script ([`predicting_getTempSeg.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/predicting_getTempSeg.sh))
    2. Construct template segmentation with our script ([`constructTempSeg.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/constructTempSeg.m))
 
-
-**Related Data:**
+:rocket: ​**Related Data:**
 
 A knee template image (“**CLAIR-Knee-103R**”) was learned from 103 MR scans of subjects without radiographic OA. We also constructed the respective 5-class tissue segmentation and a 20-region cartilage atlas for the template image. For more information on the template and atlas, please go to the [Template & Atlas page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/TemplateAtlas.md).
 
