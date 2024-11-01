@@ -62,7 +62,7 @@ doi = {https://doi.org/10.1016/j.media.2023.103035}
 
 MR images: [Osteoarthritis Initiative (OAI) dataset](https://nda.nih.gov/oai/)
 
-Cartilage and bone segmentation masks: [OAI-ZIB dataset](https://pubdata.zib.de)
+Cartilage and bone segmentation masks: OAI-ZIB dataset (our preprocessed data [here](https://drive.google.com/drive/folders/13_afAKSH7ZMOI_Nk2gfoihbJKwafw1l9?usp=sharing))
 
 - 507 segmentations for DESS MRIs from the OAI database
 - segmentation masks for the femur (ROI1), femoral cartilage (ROI2), tibia (ROI3), and tibial cartilage (ROI4)
@@ -125,7 +125,7 @@ To reproduce and validate our work, follow the steps to prepare data.
 
 ### 2.4 Processed Data from CartiMorph
 
-If you use the [processed data](https://drive.google.com/drive/folders/13_afAKSH7ZMOI_Nk2gfoihbJKwafw1l9?usp=sharing), please note that the manual segmentation annotations come from this work: 
+If you use the [preprocessed data](https://drive.google.com/drive/folders/13_afAKSH7ZMOI_Nk2gfoihbJKwafw1l9?usp=sharing), please note that the manual segmentation annotations come from this work: 
 
 - Automated Segmentation of Knee Bone and Cartilage combining Statistical Shape Knowledge and Convolutional Neural Networks: Data from the Osteoarthritis Initiative (https://doi.org/10.1016/j.media.2018.11.009)
 
@@ -354,7 +354,7 @@ For some frequently asked questions, please go to the [FAQ page](https://github.
 ## Acknowledgment
 
 - We thank the Osteoarthritis Initiative (OAI) for sharing MR images and non-image clinical data –  [Osteoarthritis Initiative (OAI) dataset](https://nda.nih.gov/oai/)
-- We thank the Computational Diagnosis and Therapy Planning Group of Zuse Institute Berlin (ZIB) for sharing the manual segmentation masks –  [OAI-ZIB dataset](https://pubdata.zib.de)
+- We thank the Computational Diagnosis and Therapy Planning Group of Zuse Institute Berlin (ZIB) for sharing the manual segmentation masks –  OAI-ZIB dataset (https://doi.org/10.1016/j.media.2018.11.009)
 
 - Our work is partially based on the [nnUNet](https://github.com/MIC-DKFZ/nnUNet)
 - Our work is partially based on the [VoxelMorph](https://github.com/voxelmorph/voxelmorph)
