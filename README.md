@@ -123,7 +123,7 @@ To reproduce and validate our work, follow the steps to prepare data.
 
 
 
-### 2.4 Processed Data from CartiMorph
+### 2.4 Preprocessed Data
 
 If you use the [preprocessed data](https://drive.google.com/drive/folders/13_afAKSH7ZMOI_Nk2gfoihbJKwafw1l9?usp=sharing), please note that the manual segmentation annotations come from this work: 
 
@@ -137,7 +137,7 @@ If you use the [preprocessed data](https://drive.google.com/drive/folders/13_afA
 
 By implementing an image standardization scheme, the proposed framework is capable of processing images of different orientations and sizes. This involves reorienting all images to the RAS+ direction, where the first, second, and third dimensions of the image array correspond to the left-right, posterior-anterior, and inferior-superior directions, respectively.
 
-Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/imgStandardisation.m)) to standardise images and segmentation labels before model training and other algorithms. Use the processed images in the remaining experiments.
+Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/imgStandardisation.m)) to standardise images and segmentation labels before model training and other algorithms. Use the preprocessed images in the remaining experiments.
 
 
 
