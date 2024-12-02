@@ -176,7 +176,17 @@ A knee template image (“**CLAIR-Knee-103R**”) was learned from 103 MR scans 
 
 **Model Training:**
 
-1. Setup a Conda environment using our script ([`envSetup_CartiMorph-nnUNet.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-nnUNet.sh)) – it will create a virtual environment `CartiMorphToolbox-nnUNet` and install [CartiMorph-nnUNet](https://github.com/YongchengYAO/CartiMorph-nnUNet)
+1. Setup a Conda environment – it will create a virtual environment `CartiMorphToolbox-nnUNet` and install [CartiMorph-nnUNet](https://github.com/YongchengYAO/CartiMorph-nnUNet)
+
+   1. Using [`envSetup_CartiMorph-nnUNet.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-nnUNet.sh) 
+
+      **OR**
+
+   2. Using [CMT-nnUNet.yml](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/CMT-nnUNet.ym) : 
+
+      ```bash
+      conda env create -f CMT-nnUNet.yml
+      ```
 
 2. Image preprocessing
 
@@ -246,7 +256,17 @@ We want to measure the model efficiency in template-to-image registration where 
 
 **Model Training:**
 
-1. Setup a Conda environment using our script ([`envSetup_CartiMorph-vxm.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-vxm.sh)) – it will create a virtual environment `CartiMorphToolbox-Vxm` and install [CartiMorph-vxm](https://github.com/YongchengYAO/CartiMorph-vxm)
+1. Setup a Conda environment – it will create a virtual environment `CartiMorphToolbox-Vxm` and install [CartiMorph-vxm](https://github.com/YongchengYAO/CartiMorph-vxm)
+
+   1. Using [`envSetup_CartiMorph-vxm.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-vxm.sh) 
+
+      **OR**
+
+   2. Using [CMT-Vxm.yml](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/CMT-Vxm.ym) : 
+
+      ```bash
+      conda env create -f CMT-Vxm.yml
+      ```
 
 2. Prepare training data ([dataset 2](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset1.xlsx)) using our script ([`M_down.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/M_down.m))
 
