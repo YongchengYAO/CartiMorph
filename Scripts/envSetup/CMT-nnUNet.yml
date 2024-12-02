@@ -98,4 +98,3 @@ dependencies:
       - unittest2==1.1.0
       - update==0.0.1
       - urllib3==2.2.2
-prefix: /home/co-yong1/rds/hpc-work/Documents/ResearchApps/miniconda3/envs/CartiMorphToolbox-nnUNet

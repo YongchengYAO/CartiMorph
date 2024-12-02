@@ -96,4 +96,3 @@ dependencies:
       - urllib3==2.2.2
       - werkzeug==3.0.3
       - wrapt==1.14.1
-prefix: /home/co-yong1/rds/hpc-work/Documents/ResearchApps/miniconda3/envs/CartiMorphToolbox-Vxm
