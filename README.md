@@ -56,9 +56,24 @@ doi = {https://doi.org/10.1016/j.media.2023.103035}
 
 
 
+
+
 ## 2. Data
 
-### 2.1 Datasets and Data Split
+### 2.1 :rocket: Preprocessed Data: **OAIZIB-CM**
+
+| Source       | link                                                         |
+| ------------ | ------------------------------------------------------------ |
+| Google Drive | [here](https://drive.google.com/drive/folders/13_afAKSH7ZMOI_Nk2gfoihbJKwafw1l9?usp=share_link) |
+| Huggingface  | [here](https://huggingface.co/datasets/YongchengYAO/OAIZIB-CM/tree/main) |
+
+If you use our preprocessed data, please note that the manual segmentation annotations come from this work: 
+
+- Automated Segmentation of Knee Bone and Cartilage combining Statistical Shape Knowledge and Convolutional Neural Networks: Data from the Osteoarthritis Initiative (https://doi.org/10.1016/j.media.2018.11.009)
+
+
+
+### 2.2 Datasets and Data Split
 
 MR images: [Osteoarthritis Initiative (OAI) dataset](https://nda.nih.gov/oai/)
 
@@ -80,7 +95,7 @@ Data split in our study:
 
 
 
-### 2.2 Non-Image Data
+### 2.3 Non-Image Data
 
 We collected non-image data from the OAI dataset and created a [subject information table](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/OAIZIB_subject_info.xlsx) which contains the following fields:
 
@@ -97,7 +112,7 @@ For more details on the construction of the table, please refer to [this page](h
 
 
 
-### 2.3 Preparing MRI Data
+### 2.4 Preparing MRI Data
 
 To reproduce and validate our work, follow the steps to prepare data.
 
@@ -122,12 +137,6 @@ To reproduce and validate our work, follow the steps to prepare data.
    - you need to use the [subject information table](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/OAIZIB_subject_info.xlsx)
 
 
-
-### 2.4 :rocket: Preprocessed Data: [**OAIZIB-CM**](https://drive.google.com/drive/folders/13_afAKSH7ZMOI_Nk2gfoihbJKwafw1l9?usp=share_link)
-
-If you use our preprocessed data, please note that the manual segmentation annotations come from this work: 
-
-- Automated Segmentation of Knee Bone and Cartilage combining Statistical Shape Knowledge and Convolutional Neural Networks: Data from the Osteoarthritis Initiative (https://doi.org/10.1016/j.media.2018.11.009)
 
 
 
@@ -159,7 +168,7 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
    1. Warp manual segmentation labels of training images to the template image space with our script ([`predicting_getTempSeg.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/predicting_getTempSeg.sh))
    2. Construct template segmentation with our script ([`constructTempSeg.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/constructTempSeg.m))
 
-:rocket: ​**Related Data:**
+:rocket: **Released Template: CLAIR-Knee-103R**
 
 A knee template image (“**CLAIR-Knee-103R**”) was learned from 103 MR scans of subjects without radiographic OA. We also constructed the respective 5-class tissue segmentation and a 20-region cartilage atlas for the template image. For more information on the template and atlas, please go to the [Template & Atlas page](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/TemplateAtlas.md).
 
@@ -299,6 +308,8 @@ We open-source the code with the hope of advancing medical image analysis techni
 
 
 
+
+
 ## 4. Experiment: Rule-based & Atlas-based Parcellation
 
 In our study, we compared the rule-based and atlas-based cartilage parcellation methods by quantitative evaluation and visual inspection. Note that we took the segmentation labels $S^l_i$ as inputs to avoid errors arising from the segmentation model. We used [dataset 4](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset4.xlsx) for this experiment.
@@ -309,6 +320,8 @@ In our study, we compared the rule-based and atlas-based cartilage parcellation 
 **Algorithms:**
 
 - Nearest-neighbor mapping function: [`CM_cal_nnMapping.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/CM_cal_nnMapping.m)
+
+
 
 
 
@@ -327,16 +340,15 @@ For details on how to find matching cases and compile [dataset 5](https://github
 **Related Data:**
 
 - All metrics (Chondrometrics): [`Chondrometrics_AllMetrics.xlsx`](https://github.com/YongchengYAO/CartiMorph/blob/main/Experiment/FCL_validation/Chondrometrics/Chondrometrics_AllMetrics.xlsx)
-
 - FCL (dABp) (Chondrometrics): [`Chondrometrics_FCL.xlsx`](https://github.com/YongchengYAO/CartiMorph/blob/main/Experiment/FCL_validation/Chondrometrics/Chondrometrics_FCL.xlsx)
-
 - FCL grading (rater 1): [`FCLgrading_rater1.xlsx`](https://github.com/YongchengYAO/CartiMorph/blob/main/Experiment/FCL_validation/Manual_FCL_Grading/FCLgrading_rater1.xlsx)
-
 - FCL grading (rater 2): [`FCLgrading_rater2.xlsx`](https://github.com/YongchengYAO/CartiMorph/blob/main/Experiment/FCL_validation/Manual_FCL_Grading/FCLgrading_rater2.xlsx)
-
 - FCL grading (rater 3): [`FCLgrading_rater3.xlsx`](https://github.com/YongchengYAO/CartiMorph/blob/main/Experiment/FCL_validation/Manual_FCL_Grading/FCLgrading_rater3.xlsx)
 
-  
+
+
+
+
 
 ## 6. FAQ
 
@@ -344,9 +356,13 @@ For some frequently asked questions, please go to the [FAQ page](https://github.
 
 
 
+
+
 ## 7. Application
 
 [CartiMorph Toolbox](https://github.com/YongchengYAO/CartiMorph-Toolbox): a platform for knee osteoarthritis monitoring and treatment evaluation
+
+
 
 
 
