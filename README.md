@@ -182,7 +182,7 @@ A knee template image (“**CLAIR-Knee-103R**”) was learned from 103 MR scans 
 
       **OR**
 
-   2. Using [CMT-nnUNet.yml](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/CMT-nnUNet.ym) : 
+   2. Using [CMT-nnUNet.yml](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/CMT-nnUNet.yml) : 
 
       ```bash
       conda env create -f CMT-nnUNet.yml
@@ -262,7 +262,7 @@ We want to measure the model efficiency in template-to-image registration where 
 
       **OR**
 
-   2. Using [CMT-Vxm.yml](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/CMT-Vxm.ym) : 
+   2. Using [CMT-Vxm.yml](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/CMT-Vxm.yml) : 
 
       ```bash
       conda env create -f CMT-Vxm.yml
