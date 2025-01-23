@@ -114,7 +114,7 @@ For more details on the construction of the table, please refer to [this page](h
 
 ### 2.4 Preparing MRI Data
 
-To reproduce and validate our work, follow the steps to prepare data.
+To reproduce and validate our work, follow the steps to prepare data or use the [preprocessed data](https://github.com/YongchengYAO/CartiMorph?tab=readme-ov-file#21-rocket-preprocessed-data-oaizib-cm).
 
 1. Download MR images from the OAI baseline dataset using the image paths in the [subject information table](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/OAIZIB_subject_info.xlsx), and convert `.dcm` to `.nii.gz` format with tools like [dcm2niix](https://github.com/rordenlab/dcm2niix)
 
@@ -152,15 +152,14 @@ Use our script ([`imgStandardisation.m`](https://github.com/YongchengYAO/CartiMo
 
 **Model Training:**
 
-1. Setup a Conda environment using our script ([`envSetup_CartiMorph-vxm.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-vxm.sh)) – it will create a virtual environment `CartiMorphToolbox-Vxm` and install [CartiMorph-vxm](https://github.com/YongchengYAO/CartiMorph-vxm)
-
+1. Setup a Conda environment `CartiMorphToolbox-Vxm` with one of these:
+   - `bash ./Scripts/envSetup/envSetup_CartiMorph-vxm.sh`
+   - `conda env create -f ./Scripts/envSetup/CMT-Vxm.yml`
 2. Prepare training data ([dataset 1](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset1.xlsx)) using our script ([`M_down.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/M_down.m))
-
 3. Train a model to learn a representative template image
 
    - [`training_scratch.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/training_scratch.sh): train a model from scratch
    - [`training_continue.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/training_continue.sh): continue training
-
 4. Construct the segmentation mask for the learned template image
 
    1. Warp manual segmentation labels of training images to the template image space with our script ([`predicting_getTempSeg.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/predicting_getTempSeg.sh))
@@ -176,17 +175,10 @@ A knee template image (“**CLAIR-Knee-103R**”) was learned from 103 MR scans 
 
 **Model Training:**
 
-1. Setup a Conda environment – it will create a virtual environment `CartiMorphToolbox-nnUNet` and install [CartiMorph-nnUNet](https://github.com/YongchengYAO/CartiMorph-nnUNet)
+1. Setup a Conda environment  `CartiMorphToolbox-nnUNet` with one of these:
 
-   1. Using [`envSetup_CartiMorph-nnUNet.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-nnUNet.sh) 
-
-      **OR**
-
-   2. Using [CMT-nnUNet.yml](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/CMT-nnUNet.yml) : 
-
-      ```bash
-      conda env create -f CMT-nnUNet.yml
-      ```
+   - `bash ./Scripts/envSetup/envSetup_CartiMorph-nnUNet.sh`
+   - `conda env create -f ./Scripts/envSetup/CMT-nnUNet.yml`
 
 2. Image preprocessing
 
@@ -256,20 +248,10 @@ We want to measure the model efficiency in template-to-image registration where 
 
 **Model Training:**
 
-1. Setup a Conda environment – it will create a virtual environment `CartiMorphToolbox-Vxm` and install [CartiMorph-vxm](https://github.com/YongchengYAO/CartiMorph-vxm)
-
-   1. Using [`envSetup_CartiMorph-vxm.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/envSetup_CartiMorph-vxm.sh) 
-
-      **OR**
-
-   2. Using [CMT-Vxm.yml](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/envSetup/CMT-Vxm.yml) : 
-
-      ```bash
-      conda env create -f CMT-Vxm.yml
-      ```
-
+1. Setup a Conda environment `CartiMorphToolbox-Vxm` with one of these:
+   - `bash ./Scripts/envSetup/envSetup_CartiMorph-vxm.sh`
+   - `conda env create -f ./Scripts/envSetup/CMT-Vxm.yml`
 2. Prepare training data ([dataset 2](https://github.com/YongchengYAO/CartiMorph/blob/main/Dataset/OAIZIB/CartiMorph_dataset1.xlsx)) using our script ([`M_down.m`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph/M_down.m))
-
 3. Model training with our script:
    - Model-MSE: [`training_img2img_MSE.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/regModel/training_img2img_MSE.sh)
    - Model-MSE-x2:  [`training_img2img_MSE_x2.sh`](https://github.com/YongchengYAO/CartiMorph/blob/main/Scripts/CartiMorph-vxm/regModel/training_img2img_MSE_x2.sh)
