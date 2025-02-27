@@ -65,15 +65,19 @@ doi = {https://doi.org/10.1016/j.media.2023.103035}
 | Source       | link                                                         |
 | ------------ | ------------------------------------------------------------ |
 | Huggingface  | [here (recommended)](https://huggingface.co/datasets/YongchengYAO/OAIZIB-CM/tree/main) |
+| Zenodo       | [here](https://zenodo.org/records/14934086)
 | Google Drive | [here](https://drive.google.com/drive/folders/13_afAKSH7ZMOI_Nk2gfoihbJKwafw1l9?usp=share_link) |
 
-If you use our preprocessed data, please note that: 
+This is the official release of **OAIZIB-CM** dataset 
 - OAIZIB-CM is based on the OAIZIB dataset
   - OAIZIB paper: [Automated Segmentation of Knee Bone and Cartilage combining Statistical Shape Knowledge and Convolutional Neural Networks: Data from the Osteoarthritis Initiative](https://doi.org/10.1016/j.media.2018.11.009)
 - In OAIZIB-CM, tibial cartilage is split into medial and lateral tibial cartilages.
-- It is compulsory to cite the papers if you use the dataset
+- OAIZIB-CM includes [CLAIR-Knee-103R](https://github.com/YongchengYAO/CartiMorph/blob/main/Documents/TemplateAtlas.md), consisting of 
+  - a template image learned from 103 MR images of subjects without radiographic OA
+  - corresponding 5-ROI segmentation mask for cartilages and bones
+  - corresponding 20-ROI atlas for articular cartilages
+- It is compulsory to cite these papers if you use the dataset
   - [CartiMorph: A framework for automated knee articular cartilage morphometrics](https://doi.org/10.1016/j.media.2023.103035)
-
 <br/>
 
 ### 2.2 Datasets and Data Split
