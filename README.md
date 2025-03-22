@@ -54,7 +54,7 @@ doi = {https://doi.org/10.1016/j.media.2023.103035}
 | $\mathcal{G}_{\theta_t}$                             | Template learning model – essentially a registration model |
 | $\mathcal{G}_{\theta_u}$                             | Registration model                                         |
 | $\mathcal{M}^{\text{down}}_{\theta_i}(\cdot, \cdot)$ | Downsampling function (resampling & cropping)              |
-| $\mathcal{M}^{\text{up}}(\cdot, \cdot)$              | Upsampling function (zero-filling & resampling)            |
+| $\mathcal{M}^{\text{up}}(\cdot, \theta_i)$              | Upsampling function (zero-filling & resampling)            |
 
 <br/><br/>
 
