@@ -80,7 +80,7 @@ This is the official release of **OAIZIB-CM** dataset
   - a template image learned from 103 MR images of subjects without radiographic OA
   - corresponding 5-ROI segmentation mask for cartilages and bones
   - corresponding 20-ROI atlas for articular cartilages
-- It is compulsory to cite these papers if you use the dataset
+- It is compulsory to cite the papers if you use the dataset
   - [CartiMorph: A framework for automated knee articular cartilage morphometrics](https://doi.org/10.1016/j.media.2023.103035)
     
 <br/>
