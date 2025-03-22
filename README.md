@@ -61,8 +61,6 @@ doi = {https://doi.org/10.1016/j.media.2023.103035}
 ## 2. Data
 
 ### 2.1 :rocket: Preprocessed Data: **OAIZIB-CM**
-#### Data
-**This is the data used for training CMT-reg and nnUNet in CMT**
 | Source       | link                                                         |
 | ------------ | ------------------------------------------------------------ |
 | Huggingface  | [main](https://huggingface.co/datasets/YongchengYAO/OAIZIB-CM/tree/main) |
@@ -74,7 +72,6 @@ doi = {https://doi.org/10.1016/j.media.2023.103035}
   - `load_dataset-support`: We added HF `load_dataset()` support in this branch (ref: [intended usage 2](https://huggingface.co/datasets/YongchengYAO/OAIZIB-CM#2-load-dataset-or-iterabledataset-from-the-load_dataset-support-branch-%EF%B8%8F))
 <br/>
 
-#### Data Info
 This is the official release of **OAIZIB-CM** dataset 
 - OAIZIB-CM is based on the OAIZIB dataset
   - OAIZIB paper: [Automated Segmentation of Knee Bone and Cartilage combining Statistical Shape Knowledge and Convolutional Neural Networks: Data from the Osteoarthritis Initiative](https://doi.org/10.1016/j.media.2018.11.009)
