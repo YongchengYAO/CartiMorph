@@ -61,13 +61,20 @@ doi = {https://doi.org/10.1016/j.media.2023.103035}
 ## 2. Data
 
 ### 2.1 :rocket: Preprocessed Data: **OAIZIB-CM**
-
+#### Data
+**This is the data used for training CMT-reg and nnUNet in CMT**
 | Source       | link                                                         |
 | ------------ | ------------------------------------------------------------ |
-| Huggingface  | [here (recommended)](https://huggingface.co/datasets/YongchengYAO/OAIZIB-CM/tree/main) |
+| Huggingface  | [main](https://huggingface.co/datasets/YongchengYAO/OAIZIB-CM/tree/main) |
+|              | [load_dataset-support](https://huggingface.co/datasets/YongchengYAO/OAIZIB-CM/tree/load_dataset-support) | 
 | Zenodo       | [here](https://zenodo.org/records/14934086)
 | Google Drive | [here](https://drive.google.com/drive/folders/13_afAKSH7ZMOI_Nk2gfoihbJKwafw1l9?usp=share_link) |
+- Huggingface Dataset Branch:
+  - `main`: The main branch contains the same files as those in Zenodo and Google Drive
+  - `load_dataset-support`: We added HF `load_dataset()` support in this branch (ref: [intended usage 2](https://huggingface.co/datasets/YongchengYAO/OAIZIB-CM#2-load-dataset-or-iterabledataset-from-the-load_dataset-support-branch-%EF%B8%8F))
+<br/>
 
+#### Data Info
 This is the official release of **OAIZIB-CM** dataset 
 - OAIZIB-CM is based on the OAIZIB dataset
   - OAIZIB paper: [Automated Segmentation of Knee Bone and Cartilage combining Statistical Shape Knowledge and Convolutional Neural Networks: Data from the Osteoarthritis Initiative](https://doi.org/10.1016/j.media.2018.11.009)
@@ -78,7 +85,9 @@ This is the official release of **OAIZIB-CM** dataset
   - corresponding 20-ROI atlas for articular cartilages
 - It is compulsory to cite these papers if you use the dataset
   - [CartiMorph: A framework for automated knee articular cartilage morphometrics](https://doi.org/10.1016/j.media.2023.103035)
+    
 <br/>
+
 
 ### 2.2 Datasets and Data Split
 
